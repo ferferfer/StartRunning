@@ -2,7 +2,7 @@
 //  main.m
 //  StartRunning
 //
-//  Created by Fernando Garcia Corrochano on 15/07/14.
+//  Created by Fernando Garcia Corrochano on 14/07/14.
 //  Copyright (c) 2014 ironHack. All rights reserved.
 //
 
@@ -10,8 +10,7 @@
 
 #import "AppDelegate.h"
 
-int main(int argc, char * argv[])
-{
+int main(int argc, char * argv[]){
 	@autoreleasepool {
 	    return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
 	}
