@@ -8,6 +8,7 @@
 
 #import "SummaryViewController.h"
 #import "TimersManager.h"
+@import MapKit;
 
 
 @interface SummaryViewController ()
@@ -17,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *totalDistance;
 @property (weak, nonatomic) IBOutlet UITextField *totalCalories;
 @property (weak, nonatomic) IBOutlet UITextField *totalAvSpeed;
+@property (weak, nonatomic) IBOutlet MKMapView *map;
 
 @property (nonatomic,strong) TimersManager *timersManager;
 
@@ -32,6 +34,13 @@
 	return self;
 }
 
+-(TimersManager *)timersManager{
+	if (_timersManager==nil) {
+    _timersManager=[[TimersManager alloc]init];
+	}
+	return _timersManager;
+}
+
 - (void)viewDidLoad{
 	[super viewDidLoad];
 	[self loadSessionData];
@@ -45,6 +54,10 @@
 	self.totalDistance.text=[NSString stringWithFormat:@"%li m", (long)self.session.distance];
 	self.totalCalories.text=[NSString stringWithFormat:@"%li Kcal",(long)self.session.kcal];
 	self.totalAvSpeed.text=[NSString stringWithFormat:@"%li Km/h",(long)self.session.avSpeed];
+}
+
+-(void)paintRouteOnMap:(MKMapView *)map{
+	
 }
 
 - (IBAction)backButtonPressed:(id)sender {

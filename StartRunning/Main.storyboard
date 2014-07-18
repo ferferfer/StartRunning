@@ -340,6 +340,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="iiJ-FI-iIV"/>
                     <navigationItem key="navigationItem" id="y0o-IW-IdI"/>
                     <connections>
+                        <outlet property="map" destination="whF-ab-yKE" id="dhW-Fx-o6g"/>
                         <outlet property="totalAvSpeed" destination="0np-EA-Ydp" id="zYr-bU-lsP"/>
                         <outlet property="totalCalories" destination="zec-Bv-7uo" id="HoW-bo-O2e"/>
                         <outlet property="totalDistance" destination="xuj-Sh-J9x" id="4ch-tZ-a3w"/>

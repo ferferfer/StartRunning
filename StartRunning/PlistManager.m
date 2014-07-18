@@ -25,7 +25,7 @@
 	[newSession setValue:@(session.distance) forKey:@"distance"];
 	[newSession setValue:@(session.avSpeed) forKey:@"avSpeed"];
 	[newSession setValue:@(session.kcal) forKey:@"kcal"];
-	[newSession setObject:session.route forKey:@"route"];
+	[newSession setObject:session.route.arrayOfCoordinates forKey:@"route"];
 
 	NSMutableArray *array=[contentArray mutableCopy];
 	[array addObject:newSession];
@@ -77,5 +77,6 @@
 	return person;
 	
 }
+
 
 @end

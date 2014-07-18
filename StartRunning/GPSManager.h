@@ -10,6 +10,6 @@
 
 @interface GPSManager : NSObject
 
--(NSMutableDictionary *)giveLocation;
+-(NSMutableDictionary *)giveLocationIfStartCounter:(BOOL)counterStarted;
 
 @end

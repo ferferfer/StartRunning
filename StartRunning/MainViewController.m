@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "Session.h"
 #import "Person.h"
+#import "Route.h"
 #import "RouteManager.h"
 #import "TimersManager.h"
 #import "SummaryViewController.h"
@@ -36,8 +37,9 @@
 @property	(nonatomic,strong)NSTimer *runningTimer;
 
 @property	(nonatomic)BOOL isFirstTime;
-@property (strong, nonatomic)	NSMutableDictionary	*route;
+@property (strong, nonatomic)	NSMutableDictionary	*routeDictionary;
 
+@property	(nonatomic,strong)Route *route;
 @property	(nonatomic,strong)Session *session;
 @property	(nonatomic,strong)TimersManager *timersManager;
 @property	(nonatomic,strong)SummaryViewController	*summaryViewController;
@@ -55,6 +57,13 @@
   self.textFieldTimeRunning.delegate = self;
 	[[UITabBar appearance] setSelectedImageTintColor:[self colorWithRed:46 green:204 blue:113]];
 	self.isFirstTime=YES;
+}
+
+-(Route *)route{
+	if (_route==nil) {
+    _route=[[Route alloc]init];
+	}
+	return _route;
 }
 
 -(GPSManager *)gpsManager{
@@ -218,8 +227,8 @@
 		
 		self.totalSeconds=[self.timersManager calculateSeconds:self.textFieldTimeWalking.text];
 		self.walkingTimer=[self startTimer];
-
-
+		
+		
 	}else{
 		NSUInteger actualTime=[self.timersManager calculateSeconds:self.textFieldTimeRunning.text];
 		if (self.presetTimeToRun != actualTime) {
@@ -234,10 +243,10 @@
 
 -(NSTimer *)startTimer{
 	return [NSTimer scheduledTimerWithTimeInterval:1.0
-																		target:self
-																	selector:@selector(updateCountdown)
-																	userInfo:nil
-																	 repeats:YES];
+																					target:self
+																				selector:@selector(updateCountdown)
+																				userInfo:nil
+																				 repeats:YES];
 }
 
 -(void)VibrateAndSay:(NSString *)sentence{
@@ -257,7 +266,7 @@
 -(void) updateCountdown {
 	int minutes, seconds;
 	
-	minutes = (self.totalSeconds % 3600) / 60;
+	minutes = (self.totalSeconds %3600) / 60;
 	seconds = (self.totalSeconds %3600) % 60;
 	
 	if ([self.runningTimer isValid]) {
@@ -275,23 +284,26 @@
 		[self VibrateAndSay:@"Start running!"];
 		self.labelRun.text=@"Running";
 		self.labelWalk.text=@"Walk";
+		
+		self.totalRunned=self.totalRunned+self.presetTimeToRun;
 	}
 	if ([self.textFieldTimeRunning.text isEqualToString:@"00:-1"]) {
-		
 		self.textFieldTimeRunning.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToRun];
 		self.totalSeconds=[self.timersManager calculateSeconds:self.textFieldTimeWalking.text];
 		[self.runningTimer invalidate];
 		self.runningTimer = nil;
 		self.walkingTimer=[self startTimer];
-
+		
 		[self VibrateAndSay:@"Start walking!"];
 		self.labelRun.text=@"Run";
 		self.labelWalk.text=@"Walking";
+		
+		self.totalWalked=self.totalWalked+self.presetTimeToWalk;
 	}
 	
 	self.totalSeconds--;
 	
-	[self.route addEntriesFromDictionary:[self.gpsManager giveLocation]];
+	[self.route addPoint:[self.gpsManager giveLocationIfStartCounter:YES]];
 	
 }
 - (IBAction)pausePressed:(id)sender {
@@ -304,6 +316,9 @@
 }
 
 - (IBAction)stopPressed:(id)sender {
+	
+
+	
 	[self.walkingTimer invalidate];
 	self.walkingTimer = nil;
 	self.textFieldTimeWalking.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToWalk];
@@ -311,32 +326,41 @@
 	[self.runningTimer invalidate];
 	self.runningTimer = nil;
 	self.textFieldTimeRunning.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToRun];
-	
+
 	self.playButton.hidden=NO;
 	self.pauseButton.hidden=YES;
 	
 	self.isFirstTime=YES;
+	
 
-//	self.session=[self.session initWithDate:[NSDate date] andTotalRunning:self.totalRunned andTotalWalking:self.totalWalked andTimeRunning:self.presetTimeToRun andTimewalking:self.presetTimeToWalk andDistance:distance andAvSpeed:avSpeed andRoute:self.route];
+	
+}
 
-
+-(void)saveSession{
+	if ([self.runningTimer isValid]) {
+		self.totalRunned+=self.presetTimeToRun-[self.timersManager calculateSeconds:self.textFieldTimeRunning.text];
+	}
+	
+	if ([self.walkingTimer isValid]) {
+		self.totalWalked+=self.presetTimeToWalk-[self.timersManager calculateSeconds:self.textFieldTimeWalking.text];
+	}
+	//RouteManager *routeManager=[[RouteManager alloc]init];
+	NSInteger distance=10;//[routeManager calculateDistance:self.route];
+	NSInteger avSpeed=10;//[routeManager calculateSpeedWithDistance:(NSInteger)distance andTime:(NSInteger)totalSessionTime];
+	self.session=[self.session initWithDate:[NSDate date] andTotalRunning:self.totalRunned andTotalWalking:self.totalWalked andTimeRunning:self.presetTimeToRun andTimewalking:self.presetTimeToWalk andDistance:distance andAvSpeed:avSpeed andRoute:self.route];
+	
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-
+	
 	if ([[segue identifier] isEqualToString:@"summarySegue"]) {
-		RouteManager *routeManager=[[RouteManager alloc]init];
-		NSInteger distance=[routeManager calculateDistance:self.route];
-		NSInteger totalSessionTime=self.totalRunned + self.totalWalked;
-		NSInteger avSpeed=[routeManager calculateSpeedWithDistance:(NSInteger)distance andTime:(NSInteger)totalSessionTime];
+
 		
-		Session	*mySession=[[Session alloc] initWithDate:[NSDate date] andTotalRunning:0 andTotalWalking:0 andTimeRunning:0 andTimewalking:0 andDistance:0 andAvSpeed:0 andRoute:[NSDictionary dictionary]];
+		[self saveSession];
 		
-		[Session storeSession:mySession];
-	
+		[self.plistManager addSession:self.session];
 		SummaryViewController	*summaryView = [segue destinationViewController];
-		summaryView.session = mySession;
-	
+		summaryView.session = self.session;
 	}
 }
 

@@ -10,7 +10,7 @@
 
 @implementation RouteManager
 
--(NSInteger)calculateDistance:(NSDictionary *)route{
+-(NSInteger)calculateDistance:(Route *)route{
 	return 0;
 }
 

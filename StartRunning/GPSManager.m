@@ -26,26 +26,28 @@
 }
 
 
--(NSMutableDictionary *)giveLocation{
+-(NSMutableDictionary *)giveLocationIfStartCounter:(BOOL)counterStarted{
 	
 	NSMutableDictionary	*locationDictionary = [[NSMutableDictionary alloc] init];
-	self.locationManager.delegate        = self;  //SET YOUR DELEGATE HERE
-	self.locationManager.desiredAccuracy = kCLLocationAccuracyBest; //SET THIS TO SPECIFY THE ACCURACY
-	[self.locationManager startUpdatingLocation];
 	
-	
-	CLLocationDegrees latitude=self.locationManager.location.coordinate.latitude;
-	CLLocationDegrees longitude=self.locationManager.location.coordinate.longitude;
-
-	NSLog(@"%@", self.locationManager.location);
-	[self.locationManager stopUpdatingLocation];
-	
-	[locationDictionary setValue:@(latitude) forKey:@"latitude"];
-	[locationDictionary setValue:@(longitude) forKey:@"longitude"];
-
-	NSLog(@"latitude %f  ---  longitude%f", latitude,longitude);
-	
-	
+	if (counterStarted) {
+		self.locationManager.delegate        = self;  //SET YOUR DELEGATE HERE
+		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest; //SET THIS TO SPECIFY THE ACCURACY
+		[self.locationManager startUpdatingLocation];
+		
+		
+		CLLocationDegrees latitude=self.locationManager.location.coordinate.latitude;
+		CLLocationDegrees longitude=self.locationManager.location.coordinate.longitude;
+		
+		NSLog(@"%@", self.locationManager.location);
+		[self.locationManager stopUpdatingLocation];
+		
+		[locationDictionary setValue:@(latitude) forKey:@"latitude"];
+		[locationDictionary setValue:@(longitude) forKey:@"longitude"];
+		
+		NSLog(@"latitude %f  ---  longitude%f", latitude,longitude);
+		
+	}
 	return locationDictionary;
 }
 
@@ -67,6 +69,6 @@
 
 
 
-	
+
 
 @end

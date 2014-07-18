@@ -33,7 +33,7 @@ return self;
 	 andTimewalking:(NSInteger)timeWalking
 			andDistance:(NSInteger)distance
 			 andAvSpeed:(NSInteger)avSpeed
-				 andRoute:(NSDictionary *)route{
+				 andRoute:(Route *)route{
 	
 	self = [super init];
 	if (self) {
@@ -49,9 +49,5 @@ return self;
 	return self;
 }
 
-+(void)storeSession:(Session *)session{
-	PlistManager *manager=[[PlistManager alloc]init];
-	[manager addSession:session];
-}
 
 @end

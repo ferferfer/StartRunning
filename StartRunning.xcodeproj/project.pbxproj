@@ -18,6 +18,7 @@
 		3F170A26197833EB0087C438 /* ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F170A25197833EB0087C438 /* ok.png */; };
 		3F170A2919790E420087C438 /* GPSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F170A2819790E420087C438 /* GPSManager.m */; };
 		3F170A2B1979115A0087C438 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F170A2A1979115A0087C438 /* CoreLocation.framework */; };
+		3F170A3419793D570087C438 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F170A3319793D570087C438 /* Route.m */; };
 		3F26FCA419759CA900106EFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F26FCA319759CA900106EFC /* Foundation.framework */; };
 		3F26FCA619759CA900106EFC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F26FCA519759CA900106EFC /* CoreGraphics.framework */; };
 		3F26FCA819759CA900106EFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F26FCA719759CA900106EFC /* UIKit.framework */; };
@@ -75,6 +76,8 @@
 		3F170A2719790E420087C438 /* GPSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSManager.h; sourceTree = "<group>"; };
 		3F170A2819790E420087C438 /* GPSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSManager.m; sourceTree = "<group>"; };
 		3F170A2A1979115A0087C438 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3F170A3219793D570087C438 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
+		3F170A3319793D570087C438 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
 		3F26FCA019759CA900106EFC /* StartRunning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StartRunning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F26FCA319759CA900106EFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F26FCA519759CA900106EFC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -220,6 +223,8 @@
 				3F26FD0E19759D1100106EFC /* Person.m */,
 				3F26FD1119759D1100106EFC /* Session.h */,
 				3F26FD1219759D1100106EFC /* Session.m */,
+				3F170A3219793D570087C438 /* Route.h */,
+				3F170A3319793D570087C438 /* Route.m */,
 				3F170A11197689AC0087C438 /* RouteManager.h */,
 				3F170A12197689AC0087C438 /* RouteManager.m */,
 				3F170A0E197667310087C438 /* PlistManager.h */,
@@ -391,6 +396,7 @@
 				3F170A191976A3C50087C438 /* SummaryViewController.m in Sources */,
 				3F170A13197689AC0087C438 /* RouteManager.m in Sources */,
 				3F26FD1919759D1100106EFC /* Person.m in Sources */,
+				3F170A3419793D570087C438 /* Route.m in Sources */,
 				3F26FD2219759DBA00106EFC /* main.m in Sources */,
 				3F170A2919790E420087C438 /* GPSManager.m in Sources */,
 				3F26FD2A19759E0500106EFC /* TimersManager.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Route.h"
 
 @interface Session : NSObject
 
@@ -18,7 +19,7 @@
 @property (nonatomic)NSInteger distance;
 @property (nonatomic)NSInteger avSpeed;
 @property (nonatomic)NSInteger kcal;
-@property (nonatomic,copy)NSDictionary *route;
+@property (nonatomic,strong)Route *route;
 
 
 -(id)initWithDate:(NSDate *)date
@@ -28,9 +29,9 @@
 	 andTimewalking:(NSInteger)timeWalking
 			andDistance:(NSInteger)distance
 			 andAvSpeed:(NSInteger)avSpeed
-				 andRoute:(NSDictionary *)route;
+				 andRoute:(Route *)route;
 
 
-+(void)storeSession:(Session *)session;
+
 
 @end

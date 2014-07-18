@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Session.h"
 #import "Person.h"
+#import "Route.h"
 
 @interface PlistManager : NSObject
 

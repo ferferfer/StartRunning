@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Route.h"
 
 @interface RouteManager : NSObject
 
--(NSInteger)calculateDistance:(NSDictionary *)route;
+-(NSInteger)calculateDistance:(Route *)route;
 -(NSInteger)calculateSpeedWithDistance:(NSInteger)distance andTime:(NSInteger)time;
 @end
