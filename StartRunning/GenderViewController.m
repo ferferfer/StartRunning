@@ -25,8 +25,6 @@
 
 @implementation GenderViewController
 
-
-
 - (void)viewDidLoad{
 	[super viewDidLoad];
 
@@ -37,8 +35,7 @@
 		[self loadDataFromPerson];
 		self.okButton.hidden=YES;
 	}
-	
-	
+
 }
 
 
@@ -48,47 +45,6 @@
 	NSInteger row=[self.person.gender isEqualToString:@"male"]?0:1;
 	[self.genderPicker selectRow:row inComponent:0 animated:YES];
 }
-
--(void)paintScreenData{
-	self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
-	
-	UIButton *okButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
-	okButton.backgroundColor=[UIColor redColor];
-	okButton.imageView.image=[UIImage imageNamed:@"back"];
-	[okButton addTarget:self action:@selector(okPressed) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:okButton];
-	
-	UILabel *genderLabel=[self createLabelWithCGRect:CGRectMake(20, 49, 146, 27) andName:@"Gender"];
-	[self.view addSubview:genderLabel];
-	UILabel *weightLabel=[self createLabelWithCGRect:CGRectMake(20, 203, 146, 38) andName:@"Weight"];
-	[self.view addSubview:weightLabel];
-	UILabel *heightLabel=[self createLabelWithCGRect:CGRectMake(20, 334, 146, 27)andName:@"Height"];
-	[self.view addSubview:heightLabel];
-}
-
--(UILabel *)createLabelWithCGRect:(CGRect)frame andName:(NSString *)name{
-	UILabel *label=[[UILabel alloc]initWithFrame:frame];
-//	label.textAlignment =  UITextAlignmentRight;
-//	label.textColor = [UIColor whiteColor];
-//	label.backgroundColor = [UIColor redColor];
-	label.font = [UIFont fontWithName:@"Helvetica Neue Light" size:(28.0)];
-	label.font = [UIFont fontWithName:@"comic sans" size:(28.0)];
-	[self.view addSubview:label];
-	label.text = [NSString stringWithFormat: @"%@", name];
-	return label;
-}
-
-
-
-//-(void)okPressed{
-//	
-//	self.person.gender=@"male";
-//	self.person.height=1;//[self.heightTextField.text intValue];
-//	self.person.weight=1;//[self.weightTextField.text intValue];
-//
-//	
-//	[self dismissViewControllerAnimated:YES completion:nil];
-//}
 
 -(Person *)person{
 	if (_person==nil) {

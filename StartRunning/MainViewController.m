@@ -14,6 +14,7 @@
 #import "SummaryViewController.h"
 #import "PlistManager.h"
 #import "GenderViewController.h"
+#import "GPSManager.h"
 @import AVFoundation;
 
 @interface MainViewController ()<UITextFieldDelegate>
@@ -42,6 +43,7 @@
 @property	(nonatomic,strong)SummaryViewController	*summaryViewController;
 @property	(nonatomic,strong)PlistManager	*plistManager;
 @property	(nonatomic,strong)GenderViewController	*genderViewController;
+@property	(nonatomic,strong)GPSManager *gpsManager;
 @end
 
 @implementation MainViewController
@@ -53,6 +55,13 @@
   self.textFieldTimeRunning.delegate = self;
 	[[UITabBar appearance] setSelectedImageTintColor:[self colorWithRed:46 green:204 blue:113]];
 	self.isFirstTime=YES;
+}
+
+-(GPSManager *)gpsManager{
+	if (_gpsManager==nil) {
+    _gpsManager=[[GPSManager alloc]init];
+	}
+	return _gpsManager;
 }
 
 -(GenderViewController *)genderViewController{
@@ -209,7 +218,8 @@
 		
 		self.totalSeconds=[self.timersManager calculateSeconds:self.textFieldTimeWalking.text];
 		self.walkingTimer=[self startTimer];
-		
+
+
 	}else{
 		NSUInteger actualTime=[self.timersManager calculateSeconds:self.textFieldTimeRunning.text];
 		if (self.presetTimeToRun != actualTime) {
@@ -280,6 +290,9 @@
 	}
 	
 	self.totalSeconds--;
+	
+	[self.route addEntriesFromDictionary:[self.gpsManager giveLocation]];
+	
 }
 - (IBAction)pausePressed:(id)sender {
 	[self.walkingTimer invalidate];
