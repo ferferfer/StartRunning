@@ -98,7 +98,8 @@
 		self.person.height=[self.heightTextField.text intValue];
 		self.person.weight=[self.weightTextField.text intValue];
 		[self.plistManager addProfile:self.person];
-		[self dismissViewControllerAnimated:YES completion:nil];
+	[self performSegueWithIdentifier:@"backToMain" sender:self];
+	//	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
