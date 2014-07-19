@@ -8,10 +8,11 @@
 
 #import "SummaryViewController.h"
 #import "TimersManager.h"
+#import "RouteManager.h"
 @import MapKit;
 
 
-@interface SummaryViewController ()
+@interface SummaryViewController () <MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *totalWalkingTime;
 @property (weak, nonatomic) IBOutlet UITextField *totalRunningTime;
 @property (weak, nonatomic) IBOutlet UITextField *totalTime;
@@ -21,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 
 @property (nonatomic,strong) TimersManager *timersManager;
+@property (nonatomic,strong) RouteManager *routeManager;
+
+@property (nonatomic,strong)MKPolylineView *routeLineView;
 
 @end
 
@@ -41,9 +45,26 @@
 	return _timersManager;
 }
 
+-(RouteManager *)routeManager{
+	if (_routeManager==nil) {
+    _routeManager=[[RouteManager alloc]init];
+	}
+	return _routeManager;
+}
+
+
 - (void)viewDidLoad{
 	[super viewDidLoad];
 	[self loadSessionData];
+	[self loadMapData];
+}
+
+-(void)loadMapData{
+	[self.map setMapType:MKMapTypeHybrid];
+	self.map.delegate=self;
+	[self.routeManager loadRoute:self.session.route.arrayOfCoordinates];
+	[self.map addOverlay:self.routeManager.routeLine];
+	[self.map setVisibleMapRect:[self.routeManager.routeLine boundingMapRect]]; 
 }
 
 -(void)loadSessionData{
@@ -56,14 +77,29 @@
 	self.totalAvSpeed.text=[NSString stringWithFormat:@"%.1f Km/h",self.session.avSpeed];
 }
 
--(void)paintRouteOnMap:(MKMapView *)map{
-	
-}
 
 - (IBAction)backButtonPressed:(id)sender {
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id )overlay{
+	MKOverlayView* overlayView = nil;
+	
+	if(overlay == self.routeManager.routeLine)		{
+		//if we have not yet created an overlay view for this overlay, create it now.
+		if(nil == self.routeLineView)			{
+			self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeManager.routeLine];
+			self.routeLineView.fillColor = [UIColor redColor];
+			self.routeLineView.strokeColor = [UIColor redColor];
+			self.routeLineView.lineWidth = 6;
+			}
+		
+		overlayView = self.routeLineView;
+		
+		}
+	return overlayView;
+	
+}
 
 /*
  #pragma mark - Navigation

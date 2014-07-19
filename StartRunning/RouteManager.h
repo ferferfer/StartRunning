@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Route.h"
+@import MapKit;
 
 @interface RouteManager : NSObject
 
+@property(nonatomic,strong)MKPolyline *routeLine;
+
 -(double)calculateDistance:(Route *)route;
 -(NSInteger)calculateSpeedWithDistance:(NSInteger)distance andTime:(NSInteger)time;
+-(void) loadRoute:(NSArray *)coordinates;
+
 @end
