@@ -37,22 +37,16 @@
 	self.genderViewController=[[GenderViewController alloc]init];
 	[self performSegueWithIdentifier:@"genderScreenSegue" sender:self];
 }
-//
-//-(GenderViewController *)genderViewController{
-//	if (_genderViewController) {
-//    _genderViewController=[[GenderViewController alloc]init];
-//	}
-//	return _genderViewController;
-//}
 
 - (void)viewDidLoad{
 	
 	[super viewDidLoad];
-		if (![self.plistManager plistExistInDocumentsFolder]){
-	self.helloText.hidden=NO;
-	self.firstText.hidden=NO;
-	self.secondText.hidden=NO;
-		}
+	if (![self.plistManager plistExistInDocumentsFolder]){
+		self.helloText.hidden=NO;
+		self.firstText.hidden=NO;
+		self.secondText.hidden=NO;
+		self.okButton.hidden=NO;
+	}
 }
 
 -(PlistManager *)plistManager{
@@ -62,19 +56,7 @@
 	return _plistManager;
 }
 
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-
-//	if ([[segue identifier] isEqualToString:@"mainScreenSegue"]) {
-//		//	MainViewController	*mainView = [segue destinationViewController];
-//	}
-	if ([[segue identifier] isEqualToString:@"genderScreenSegue"]) {
-		GenderViewController *genderView = [segue destinationViewController];
-	}
-
-}
 
 
 @end

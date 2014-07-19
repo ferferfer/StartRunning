@@ -64,7 +64,7 @@
 	self.map.delegate=self;
 	[self.routeManager loadRoute:self.session.route.arrayOfCoordinates];
 	[self.map addOverlay:self.routeManager.routeLine];
-	[self.map setVisibleMapRect:[self.routeManager.routeLine boundingMapRect]]; 
+	[self.map setVisibleMapRect:[self.routeManager.routeLine boundingMapRect]];
 }
 
 -(void)loadSessionData{
@@ -89,14 +89,14 @@
 		//if we have not yet created an overlay view for this overlay, create it now.
 		if(nil == self.routeLineView)			{
 			self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeManager.routeLine];
-			self.routeLineView.fillColor = [UIColor redColor];
-			self.routeLineView.strokeColor = [UIColor redColor];
-			self.routeLineView.lineWidth = 6;
-			}
+			self.routeLineView.fillColor = [UIColor blueColor];
+			self.routeLineView.strokeColor = [UIColor blueColor];
+			self.routeLineView.lineWidth = 12;
+		}
 		
 		overlayView = self.routeLineView;
 		
-		}
+	}
 	return overlayView;
 	
 }
