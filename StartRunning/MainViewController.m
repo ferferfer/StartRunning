@@ -31,13 +31,12 @@
 @property (nonatomic) NSInteger	presetTimeToRun;
 @property (nonatomic) NSInteger totalWalked;
 @property (nonatomic) NSInteger	totalRunned;
+@property (nonatomic) NSInteger totalSeconds;
 
-@property (nonatomic) int totalSeconds;
 @property	(nonatomic,strong)NSTimer *walkingTimer;
 @property	(nonatomic,strong)NSTimer *runningTimer;
 
 @property	(nonatomic)BOOL isFirstTime;
-@property (strong, nonatomic)	NSMutableDictionary	*routeDictionary;
 
 @property	(nonatomic,strong)Route *route;
 @property	(nonatomic,strong)Session *session;
@@ -57,6 +56,8 @@
   self.textFieldTimeRunning.delegate = self;
 	[[UITabBar appearance] setSelectedImageTintColor:[self colorWithRed:46 green:204 blue:113]];
 	self.isFirstTime=YES;
+	self.textFieldTimeRunning.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToRun];
+	self.textFieldTimeWalking.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToWalk];
 }
 
 -(Route *)route{
@@ -217,6 +218,8 @@
 - (IBAction)playPressed:(id)sender {
 	self.playButton.hidden=YES;
 	self.pauseButton.hidden=NO;
+	[self.gpsManager startCounter:YES];
+	
 	//only first time
 	if (self.isFirstTime) {
 		self.isFirstTime=NO;
@@ -302,9 +305,9 @@
 	}
 	
 	self.totalSeconds--;
-	
-	[self.route addPoint:[self.gpsManager giveLocationIfStartCounter:YES]];
-	
+
+	[self.route addPoint:self.gpsManager.locationDictionary];
+
 }
 - (IBAction)pausePressed:(id)sender {
 	[self.walkingTimer invalidate];
@@ -321,18 +324,18 @@
 	
 	[self.walkingTimer invalidate];
 	self.walkingTimer = nil;
-	self.textFieldTimeWalking.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToWalk];
+
 	
 	[self.runningTimer invalidate];
 	self.runningTimer = nil;
-	self.textFieldTimeRunning.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToRun];
+
 
 	self.playButton.hidden=NO;
 	self.pauseButton.hidden=YES;
 	
 	self.isFirstTime=YES;
 	
-
+	[self.gpsManager startCounter:NO];
 	
 }
 
@@ -344,9 +347,10 @@
 	if ([self.walkingTimer isValid]) {
 		self.totalWalked+=self.presetTimeToWalk-[self.timersManager calculateSeconds:self.textFieldTimeWalking.text];
 	}
-	//RouteManager *routeManager=[[RouteManager alloc]init];
-	NSInteger distance=10;//[routeManager calculateDistance:self.route];
-	NSInteger avSpeed=10;//[routeManager calculateSpeedWithDistance:(NSInteger)distance andTime:(NSInteger)totalSessionTime];
+	RouteManager *routeManager=[[RouteManager alloc]init];
+	double distance=[routeManager calculateDistance:self.route];
+	NSInteger totalSessionTime=self.totalWalked+self.totalRunned;
+	NSInteger avSpeed=[routeManager calculateSpeedWithDistance:(double)distance andTime:(NSInteger)totalSessionTime];
 	self.session=[self.session initWithDate:[NSDate date] andTotalRunning:self.totalRunned andTotalWalking:self.totalWalked andTimeRunning:self.presetTimeToRun andTimewalking:self.presetTimeToWalk andDistance:distance andAvSpeed:avSpeed andRoute:self.route];
 	
 }

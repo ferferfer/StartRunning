@@ -11,6 +11,6 @@
 
 @interface RouteManager : NSObject
 
--(NSInteger)calculateDistance:(Route *)route;
+-(double)calculateDistance:(Route *)route;
 -(NSInteger)calculateSpeedWithDistance:(NSInteger)distance andTime:(NSInteger)time;
 @end

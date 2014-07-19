@@ -11,15 +11,10 @@
 @implementation Route
 
 -(void)addPoint:(NSDictionary *)coordinate{
-	
-	[self.pointCoordinates setValue:[coordinate valueForKey:@"latitude"] forKey:@"latitude"];
-	[self.pointCoordinates setValue:[coordinate valueForKey:@"longitude"] forKey:@"longitude"];
-	
-	[self.arrayOfCoordinates addObject:self.pointCoordinates];
-	
+	[self.arrayOfCoordinates addObject:coordinate];
 }
 
-- (instancetype)init{
+- (id)init{
 	self = [super init];
 	if (self) {
 		_pointCoordinates=[[NSMutableDictionary alloc]init];

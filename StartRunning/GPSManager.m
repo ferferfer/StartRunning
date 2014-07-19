@@ -25,31 +25,25 @@
 	return _locationManager;
 }
 
+//-(NSMutableDictionary*)locationDictionary{
+//	if (_locationDictionary==nil) {
+//    _locationDictionary=[[NSMutableDictionary alloc]init];
+//	}
+//	return _locationDictionary;
+//}
 
--(NSMutableDictionary *)giveLocationIfStartCounter:(BOOL)counterStarted{
-	
-	NSMutableDictionary	*locationDictionary = [[NSMutableDictionary alloc] init];
+
+-(void)startCounter:(BOOL)counterStarted{
 	
 	if (counterStarted) {
 		self.locationManager.delegate        = self;  //SET YOUR DELEGATE HERE
 		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest; //SET THIS TO SPECIFY THE ACCURACY
 		[self.locationManager startUpdatingLocation];
-		
-		
-		CLLocationDegrees latitude=self.locationManager.location.coordinate.latitude;
-		CLLocationDegrees longitude=self.locationManager.location.coordinate.longitude;
-		
-		NSLog(@"%@", self.locationManager.location);
+	}else{
 		[self.locationManager stopUpdatingLocation];
-		
-		[locationDictionary setValue:@(latitude) forKey:@"latitude"];
-		[locationDictionary setValue:@(longitude) forKey:@"longitude"];
-		
-		NSLog(@"latitude %f  ---  longitude%f", latitude,longitude);
-		
 	}
-	return locationDictionary;
 }
+
 
 #pragma mark - CLLocationManagerDelegate
 
@@ -61,10 +55,17 @@
 	[errorAlert show];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-	CLLocation *currentLocation = newLocation;
-	NSLog(@"%@", currentLocation);
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+
+	CLLocationDegrees latitude=newLocation.coordinate.latitude;
+	CLLocationDegrees longitude=newLocation.coordinate.longitude;
+	
+	self.locationDictionary=[[NSMutableDictionary alloc]init];
+	[self.locationDictionary setValue:@(latitude) forKey:@"latitude"];
+	[self.locationDictionary setValue:@(longitude) forKey:@"longitude"];
+	
+	NSLog(@"latitude %f  ---  longitude%f", latitude,longitude);
+	
 }
 
 

@@ -31,8 +31,8 @@ return self;
 	andTotalWalking:(NSInteger)totalWalking
 	 andTimeRunning:(NSInteger)timeRunning
 	 andTimewalking:(NSInteger)timeWalking
-			andDistance:(NSInteger)distance
-			 andAvSpeed:(NSInteger)avSpeed
+			andDistance:(double)distance
+			 andAvSpeed:(double)avSpeed
 				 andRoute:(Route *)route{
 	
 	self = [super init];

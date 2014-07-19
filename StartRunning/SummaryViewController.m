@@ -51,9 +51,9 @@
 	self.totalRunningTime.text=[self.timersManager returnTimeFormatWithSeconds:self.session.totalRunning];
 	NSInteger totalSessionTime=self.session.totalRunning+self.session.totalWalking;
 	self.totalTime.text=[self.timersManager returnTimeFormatWithSeconds:totalSessionTime];
-	self.totalDistance.text=[NSString stringWithFormat:@"%li m", (long)self.session.distance];
+	self.totalDistance.text=[NSString stringWithFormat:@"%.1f Km", self.session.distance/1000];
 	self.totalCalories.text=[NSString stringWithFormat:@"%li Kcal",(long)self.session.kcal];
-	self.totalAvSpeed.text=[NSString stringWithFormat:@"%li Km/h",(long)self.session.avSpeed];
+	self.totalAvSpeed.text=[NSString stringWithFormat:@"%.1f Km/h",self.session.avSpeed];
 }
 
 -(void)paintRouteOnMap:(MKMapView *)map{

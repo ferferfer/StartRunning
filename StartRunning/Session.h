@@ -16,8 +16,8 @@
 @property (nonatomic)NSInteger totalRunning;
 @property (nonatomic)NSInteger timeWalking;
 @property (nonatomic)NSInteger timeRunning;
-@property (nonatomic)NSInteger distance;
-@property (nonatomic)NSInteger avSpeed;
+@property (nonatomic)double distance;
+@property (nonatomic)double avSpeed;
 @property (nonatomic)NSInteger kcal;
 @property (nonatomic,strong)Route *route;
 
@@ -27,8 +27,8 @@
 	andTotalWalking:(NSInteger)totalWalking
 	 andTimeRunning:(NSInteger)timeRunning
 	 andTimewalking:(NSInteger)timeWalking
-			andDistance:(NSInteger)distance
-			 andAvSpeed:(NSInteger)avSpeed
+			andDistance:(double)distance
+			 andAvSpeed:(double)avSpeed
 				 andRoute:(Route *)route;
 
 

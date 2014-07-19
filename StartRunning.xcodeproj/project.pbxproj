@@ -78,6 +78,7 @@
 		3F170A2A1979115A0087C438 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3F170A3219793D570087C438 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
 		3F170A3319793D570087C438 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
+		3F170A35197979270087C438 /* StartRunning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = StartRunning.entitlements; sourceTree = "<group>"; };
 		3F26FCA019759CA900106EFC /* StartRunning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StartRunning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F26FCA319759CA900106EFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F26FCA519759CA900106EFC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -175,6 +176,7 @@
 		3F26FCA919759CA900106EFC /* StartRunning */ = {
 			isa = PBXGroup;
 			children = (
+				3F170A35197979270087C438 /* StartRunning.entitlements */,
 				3F26FCB219759CA900106EFC /* AppDelegate.h */,
 				3F26FCB319759CA900106EFC /* AppDelegate.m */,
 				3F26FD3019759E6000106EFC /* Assets */,
@@ -326,6 +328,17 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = ironHack;
 				TargetAttributes = {
+					3F26FC9F19759CA900106EFC = {
+						DevelopmentTeam = YA8E6467UK;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
+					};
 					3F26FCC019759CA900106EFC = {
 						TestTargetID = 3F26FC9F19759CA900106EFC;
 					};
@@ -510,10 +523,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StartRunning/StartRunning-Prefix.pch";
 				INFOPLIST_FILE = "StartRunning/StartRunning-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -523,10 +539,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "StartRunning/StartRunning-Prefix.pch";
 				INFOPLIST_FILE = "StartRunning/StartRunning-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
