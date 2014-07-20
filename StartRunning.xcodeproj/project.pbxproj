@@ -37,7 +37,6 @@
 		3F26FD1819759D1100106EFC /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F26FD0C19759D1100106EFC /* pause.png */; };
 		3F26FD1919759D1100106EFC /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F26FD0E19759D1100106EFC /* Person.m */; };
 		3F26FD1A19759D1100106EFC /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F26FD0F19759D1100106EFC /* play.png */; };
-		3F26FD1B19759D1100106EFC /* DataList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F26FD1019759D1100106EFC /* DataList.plist */; };
 		3F26FD1C19759D1100106EFC /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F26FD1219759D1100106EFC /* Session.m */; };
 		3F26FD1E19759D9200106EFC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F26FD1D19759D9200106EFC /* InfoPlist.strings */; };
 		3F26FD2219759DBA00106EFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F26FD1F19759DBA00106EFC /* main.m */; };
@@ -101,7 +100,6 @@
 		3F26FD0D19759D1100106EFC /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		3F26FD0E19759D1100106EFC /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		3F26FD0F19759D1100106EFC /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
-		3F26FD1019759D1100106EFC /* DataList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataList.plist; sourceTree = "<group>"; };
 		3F26FD1119759D1100106EFC /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		3F26FD1219759D1100106EFC /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		3F26FD1D19759D9200106EFC /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 				3F26FD0C19759D1100106EFC /* pause.png */,
 				3F26FD0F19759D1100106EFC /* play.png */,
 				3F170A1A1976AA450087C438 /* back.png */,
-				3F26FD1019759D1100106EFC /* DataList.plist */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -380,7 +377,6 @@
 				3F26FD1619759D1100106EFC /* iconProfile.png in Resources */,
 				3F26FD2C19759E3400106EFC /* Main.storyboard in Resources */,
 				3F26FD2319759DBA00106EFC /* StartRunning-Info.plist in Resources */,
-				3F26FD1B19759D1100106EFC /* DataList.plist in Resources */,
 				3F26FD2519759DFD00106EFC /* iconPlay2.png in Resources */,
 				3F26FD2919759E0500106EFC /* stop.png in Resources */,
 				3F26FD1E19759D9200106EFC /* InfoPlist.strings in Resources */,
