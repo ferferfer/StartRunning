@@ -1,23 +1,40 @@
 //
-//  RouteManager.m
+//  SessionHelper.m
 //  StartRunning
 //
 //  Created by Fernando Garcia Corrochano on 16/07/14.
 //  Copyright (c) 2014 ironHack. All rights reserved.
 //
 
-#import "RouteManager.h"
+#import "SessionHelper.h"
+#import "PlistManager.h"
 
-@interface RouteManager	()
+#define KCAL_POR_KM_ANDANDO 0.73
+#define KCAL_POR_KM_CORRIENDO 1.03
+
+@interface SessionHelper()
 
 @property(nonatomic)MKMapRect routeRect;
+@property(nonatomic,strong)PlistManager *plistManager;
 
 @end
 
-@implementation RouteManager
+@implementation SessionHelper
+
+-(PlistManager *)plistManager{
+	if (_plistManager==nil) {
+    _plistManager=[[PlistManager alloc]init];
+	}
+	return _plistManager;
+}
 
 -(double)calculateDistance:(Route *)route{
 	double totalDistance=0;
+	
+	if ([route.arrayOfCoordinates count]==1) {
+    return totalDistance;
+	}
+	
 	for (int i=0;i< [route.arrayOfCoordinates count]; i++) {
 		NSMutableArray *array=[[NSMutableArray alloc]initWithArray:route.arrayOfCoordinates copyItems:NO];
 		//Location 1
@@ -99,4 +116,23 @@
 }
 
 
+-(double)calculateKcalWithWalking:(NSInteger)walkTime
+													andRunning:(NSInteger)runTime
+												 andDistance:(NSInteger)distance{
+	Person *person=[[Person alloc]init];
+	person=[self.plistManager loadProfile];
+	double kCal=0;
+	NSInteger totalTime=walkTime+runTime;
+	double distanceWalked=(walkTime*distance)/totalTime;
+	double distanceRunned=(runTime*distance)/totalTime;
+	
+	kCal=((person.weight*KCAL_POR_KM_ANDANDO)*(distanceWalked/1000))+
+			 ((person.weight*KCAL_POR_KM_CORRIENDO)*(distanceRunned/1000));
+	
+	return kCal;
+}
+
+
 @end
+
+

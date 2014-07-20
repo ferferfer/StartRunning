@@ -18,20 +18,30 @@
 
 @implementation GPSManager
 
+- (id)init{
+	
+	self=[self initWithTalavera];
+	
+	return self;
+}
+
+-(instancetype)initWithTalavera{
+	self = [super init];
+	if (self) {
+		_locationDictionary=[[NSMutableDictionary alloc]init];
+		[_locationDictionary setValue:@(39.9601232) forKey:@"latitude"];
+		[_locationDictionary setValue:@(-4.828641) forKey:@"longitude"];
+		_locationManager=[[CLLocationManager alloc]init];
+	}
+	return self;
+}
+
 -(CLLocationManager *)locationManager{
 	if (_locationManager==nil) {
     _locationManager=[[CLLocationManager alloc]init];
 	}
 	return _locationManager;
 }
-
-//-(NSMutableDictionary*)locationDictionary{
-//	if (_locationDictionary==nil) {
-//    _locationDictionary=[[NSMutableDictionary alloc]init];
-//	}
-//	return _locationDictionary;
-//}
-
 
 -(void)startCounter:(BOOL)counterStarted{
 	
@@ -72,9 +82,6 @@
 	NSLog(@"latitude %f  ---  longitude%f", latitude,longitude);
 	
 }
-
-
-
 
 
 @end

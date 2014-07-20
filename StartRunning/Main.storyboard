@@ -18,6 +18,7 @@
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="b3b-Y2-T0F"/>
                         <segue destination="wgB-cv-78Z" kind="relationship" relationship="viewControllers" id="fQQ-2k-CyR"/>
+                        <segue destination="xj8-MO-ODS" kind="relationship" relationship="viewControllers" id="smY-Zh-xCk"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AD3-3f-cA0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -155,15 +156,17 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="28"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="90" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nX7-FW-yfr">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="90" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nX7-FW-yfr">
                                 <rect key="frame" x="20" y="284" width="89" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="weight"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="48"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="183" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nSi-f9-PdP">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="183" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nSi-f9-PdP">
                                 <rect key="frame" x="197" y="285" width="103" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="height"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="48"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
@@ -189,6 +192,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2h-EV-IOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1143" y="-141"/>
+        </scene>
+        <!--Sessions Table View Controller - History-->
+        <scene sceneID="hnu-vE-BOg">
+            <objects>
+                <tableViewController id="xj8-MO-ODS" customClass="SessionsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="74" sectionHeaderHeight="22" sectionFooterHeight="22" id="axc-Va-Trf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="sessionCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sessionCell" textLabel="nNa-Zh-RaU" detailTextLabel="BfC-vH-NMy" rowHeight="74" style="IBUITableViewCellStyleSubtitle" id="Oau-A3-fJl">
+                                <rect key="frame" x="0.0" y="22" width="320" height="74"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oau-A3-fJl" id="L3f-li-5vJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nNa-Zh-RaU">
+                                            <rect key="frame" x="15" y="18" width="34" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BfC-vH-NMy">
+                                            <rect key="frame" x="15" y="40" width="43" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="haJ-k2-d9y" kind="modal" identifier="goToSummarySegue" id="Mpj-WS-V0G"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xj8-MO-ODS" id="H3Y-Zz-o9G"/>
+                            <outlet property="delegate" destination="xj8-MO-ODS" id="fGm-tg-boI"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="History" image="iconMenu.png" id="qra-TK-XJK"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K0e-tv-OBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1683" y="-135"/>
         </scene>
         <!--Main View Controller - Start Running-->
         <scene sceneID="ufC-wZ-h7g">
@@ -436,6 +487,7 @@
     <resources>
         <image name="back.png" width="140" height="80"/>
         <image name="background.png" width="640" height="1136"/>
+        <image name="iconMenu.png" width="25" height="25"/>
         <image name="iconPlay2.png" width="25" height="25"/>
         <image name="iconProfile.png" width="25" height="25"/>
         <image name="ok.png" width="140" height="80"/>
@@ -449,7 +501,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="olp-FI-511"/>
-        <segue reference="BN5-Pq-FtR"/>
+        <segue reference="Ed5-oJ-ACI"/>
+        <segue reference="fQQ-2k-CyR"/>
+        <segue reference="Mpj-WS-V0G"/>
     </inferredMetricsTieBreakers>
 </document>

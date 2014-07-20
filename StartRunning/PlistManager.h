@@ -17,4 +17,9 @@
 -(NSString *)pathOfPlistInDocumentsFolder;
 -(void)addProfile:(Person *)person;
 -(Person *)loadProfile;
+-(void)updateProfile:(Person *)person;
+-(NSInteger)numberofSessionsInPlist;
+-(NSArray *)arrayOfSessions;
+-(Session *)loadSessionWithIndex:(NSInteger)index;
+
 @end

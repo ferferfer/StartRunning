@@ -9,7 +9,7 @@
 #import "GenderViewController.h"
 #import "PlistManager.h"
 
-@interface GenderViewController ()
+@interface GenderViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *genderPicker;
 @property (weak, nonatomic) IBOutlet UITextField *weightTextField;
@@ -31,6 +31,7 @@
 	if(![self.plistManager plistExistInDocumentsFolder]){
 		self.okButton.hidden=NO;
 	}else{
+		self.weightTextField.delegate=self;
 		self.person =[self.plistManager	loadProfile];
 		[self loadDataFromPerson];
 		self.okButton.hidden=YES;
@@ -93,6 +94,30 @@
     self.person.gender=@"Female";
 	}
 }
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+	if([textField.accessibilityLabel isEqualToString:@"weight"]){
+		self.person.weight=[textField.text intValue];
+	}
+	if([textField.accessibilityLabel isEqualToString:@"height"]){
+		self.person.height=[textField.text intValue];
+	}
+
+	[self.plistManager updateProfile:self.person];
+}
+
+
+-(double)calculateIMC{
+	Person *person=[[Person alloc]init];
+	person=[self.plistManager loadProfile];
+	if (person.height==0 || person.weight==0) {
+    return 0;
+	}
+	double imc=person.weight/(person.height*person.height);
+	
+	return imc;
+}
+
 - (IBAction)okButtonPressed:(id)sender {
 		self.person.gender=@"male";
 		self.person.height=[self.heightTextField.text intValue];

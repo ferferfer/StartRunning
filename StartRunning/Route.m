@@ -11,7 +11,10 @@
 @implementation Route
 
 -(void)addPoint:(NSDictionary *)coordinate{
-	[self.arrayOfCoordinates addObject:coordinate];
+	if (![[self.arrayOfCoordinates lastObject]isEqualToDictionary:coordinate]) {
+		[self.arrayOfCoordinates addObject:coordinate];
+	}
+	
 }
 
 - (id)init{

@@ -11,7 +11,7 @@
 @implementation PlistManager
 
 -(void)addSession:(Session *)session{
-
+	
 	NSString *filePath=[self pathOfPlistInDocumentsFolder];
 	
 	NSMutableArray *contentArray = [[NSArray arrayWithContentsOfFile:filePath] mutableCopy];
@@ -26,11 +26,29 @@
 	[newSession setValue:@(session.avSpeed) forKey:@"avSpeed"];
 	[newSession setValue:@(session.kcal) forKey:@"kcal"];
 	[newSession setObject:session.route.arrayOfCoordinates forKey:@"route"];
-
+	
 	NSMutableArray *array=[contentArray mutableCopy];
 	[array addObject:newSession];
 	[array writeToFile:filePath atomically: YES];
+	
+}
 
+-(Session *)loadSessionWithIndex:(NSInteger)index{
+	NSString *path=[self pathOfPlistInDocumentsFolder];
+	NSMutableArray *contentArray = [NSArray arrayWithContentsOfFile:path];
+	NSMutableDictionary *data=[contentArray objectAtIndex:index];
+	Session *session=[[Session alloc]initWithDate:[data valueForKey:@"sessionDate"]
+																andTotalRunning:[[data valueForKey:@"totalRunning"] intValue]
+																andTotalWalking:[[data valueForKey:@"totalWalking"] intValue]
+																 andTimeRunning:[[data valueForKey:@"timeRunning"] intValue]
+																 andTimewalking:[[data valueForKey:@"timeWalking"] intValue]
+																		andDistance:[[data valueForKey:@"distance"] doubleValue]
+																		 andAvSpeed:[[data valueForKey:@"avSpeed"] doubleValue]
+																				andKcal:[[data valueForKey:@"kcal"] doubleValue]
+																			 andRoute:[data objectForKey:@"route"]];
+	
+	return session;
+	
 }
 
 -(void)addProfile:(Person *)person{
@@ -78,5 +96,35 @@
 	
 }
 
+-(void)updateProfile:(Person *)person{
+	
+	NSString *filePath=[self pathOfPlistInDocumentsFolder];
+	
+	NSMutableDictionary *profile=[[NSMutableDictionary alloc]init];
+	[profile setObject:person.gender forKey:@"gender"];
+	[profile setObject:@(person.height) forKey:@"height"];
+	[profile setObject:@(person.weight) forKey:@"weight"];
+	
+	NSMutableArray *array=[[NSMutableArray alloc]init];
+	[array insertObject:profile atIndex:0];
+	[array writeToFile:filePath atomically: YES];
+	
+}
+
+-(NSInteger)numberofSessionsInPlist{
+	NSString *path=[self pathOfPlistInDocumentsFolder];
+	NSMutableArray *array = [NSArray arrayWithContentsOfFile:path];
+	return [array count];
+}
+
+-(NSArray *)arrayOfSessions{
+	NSString *path=[self pathOfPlistInDocumentsFolder];
+	NSMutableArray *array = [NSArray arrayWithContentsOfFile:path];
+	NSMutableArray *sessionsArray=[[NSMutableArray alloc]init];
+	for(int i=1;i<[array count];i++){
+		[sessionsArray addObject:[array objectAtIndex:i]];
+	}
+	return sessionsArray;
+}
 
 @end

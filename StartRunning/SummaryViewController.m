@@ -8,7 +8,7 @@
 
 #import "SummaryViewController.h"
 #import "TimersManager.h"
-#import "RouteManager.h"
+#import "SessionHelper.h"
 @import MapKit;
 
 
@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 
 @property (nonatomic,strong) TimersManager *timersManager;
-@property (nonatomic,strong) RouteManager *routeManager;
+@property (nonatomic,strong) SessionHelper *sessionHelper;
 
 @property (nonatomic,strong)MKPolylineView *routeLineView;
 
@@ -45,11 +45,11 @@
 	return _timersManager;
 }
 
--(RouteManager *)routeManager{
-	if (_routeManager==nil) {
-    _routeManager=[[RouteManager alloc]init];
+-(SessionHelper *)sessionHelper{
+	if (_sessionHelper==nil) {
+    _sessionHelper=[[SessionHelper alloc]init];
 	}
-	return _routeManager;
+	return _sessionHelper;
 }
 
 
@@ -62,9 +62,9 @@
 -(void)loadMapData{
 	[self.map setMapType:MKMapTypeHybrid];
 	self.map.delegate=self;
-	[self.routeManager loadRoute:self.session.route.arrayOfCoordinates];
-	[self.map addOverlay:self.routeManager.routeLine];
-	[self.map setVisibleMapRect:[self.routeManager.routeLine boundingMapRect]];
+	[self.sessionHelper loadRoute:self.session.route.arrayOfCoordinates];
+	[self.map addOverlay:self.sessionHelper.routeLine];
+	[self.map setVisibleMapRect:[self.sessionHelper.routeLine boundingMapRect]];
 }
 
 -(void)loadSessionData{
@@ -73,7 +73,7 @@
 	NSInteger totalSessionTime=self.session.totalRunning+self.session.totalWalking;
 	self.totalTime.text=[self.timersManager returnTimeFormatWithSeconds:totalSessionTime];
 	self.totalDistance.text=[NSString stringWithFormat:@"%.1f Km", self.session.distance/1000];
-	self.totalCalories.text=[NSString stringWithFormat:@"%li Kcal",(long)self.session.kcal];
+	self.totalCalories.text=[NSString stringWithFormat:@"%.2f Kcal",self.session.kcal];
 	self.totalAvSpeed.text=[NSString stringWithFormat:@"%.1f Km/h",self.session.avSpeed];
 }
 
@@ -85,10 +85,10 @@
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id )overlay{
 	MKOverlayView* overlayView = nil;
 	
-	if(overlay == self.routeManager.routeLine)		{
+	if(overlay == self.sessionHelper.routeLine)		{
 		//if we have not yet created an overlay view for this overlay, create it now.
 		if(nil == self.routeLineView)			{
-			self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeManager.routeLine];
+			self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.sessionHelper.routeLine];
 			self.routeLineView.fillColor = [UIColor blueColor];
 			self.routeLineView.strokeColor = [UIColor blueColor];
 			self.routeLineView.lineWidth = 12;

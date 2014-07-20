@@ -15,15 +15,16 @@
 - (instancetype)init{
 	
 	self=[self initWithDate:[NSDate date]
-					andTotalRunning:0 
+					andTotalRunning:0
 					andTotalWalking:0
 					 andTimeRunning:0
 					 andTimewalking:0
 							andDistance:0
 							 andAvSpeed:0
+									andKcal:0
 								 andRoute:nil];
-
-return self;
+	
+	return self;
 }
 
 -(id)initWithDate:(NSDate *)date
@@ -33,6 +34,7 @@ return self;
 	 andTimewalking:(NSInteger)timeWalking
 			andDistance:(double)distance
 			 andAvSpeed:(double)avSpeed
+					andKcal:(double)kcal
 				 andRoute:(Route *)route{
 	
 	self = [super init];
@@ -44,6 +46,7 @@ return self;
 		_timeWalking=timeWalking;
 		_distance=distance;
 		_avSpeed=avSpeed;
+		_kcal=kcal;
 		_route=route;
 	}
 	return self;

@@ -10,7 +10,7 @@
 #import "Session.h"
 #import "Person.h"
 #import "Route.h"
-#import "RouteManager.h"
+#import "SessionHelper.h"
 #import "TimersManager.h"
 #import "SummaryViewController.h"
 #import "PlistManager.h"
@@ -286,7 +286,8 @@
 		self.labelRun.text=@"Running";
 		self.labelWalk.text=@"Walk";
 		
-		self.totalRunned=self.totalRunned+self.presetTimeToRun;
+		self.totalWalked+=self.presetTimeToWalk;
+		
 	}
 	if ([self.textFieldTimeRunning.text isEqualToString:@"00:-1"]) {
 		self.textFieldTimeRunning.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToRun];
@@ -299,7 +300,7 @@
 		self.labelRun.text=@"Run";
 		self.labelWalk.text=@"Walking";
 		
-		self.totalWalked=self.totalWalked+self.presetTimeToWalk;
+		self.totalRunned+=self.presetTimeToRun;
 	}
 	
 	self.totalSeconds--;
@@ -355,11 +356,14 @@
 	if ([self.walkingTimer isValid]) {
 		self.totalWalked+=self.presetTimeToWalk-[self.timersManager calculateSeconds:self.textFieldTimeWalking.text];
 	}
-	RouteManager *routeManager=[[RouteManager alloc]init];
-	double distance=[routeManager calculateDistance:self.route];
+	SessionHelper *sessionHelper=[[SessionHelper alloc]init];
+	double distance=[sessionHelper calculateDistance:self.route];
 	NSInteger totalSessionTime=self.totalWalked+self.totalRunned;
-	NSInteger avSpeed=[routeManager calculateSpeedWithDistance:(double)distance andTime:(NSInteger)totalSessionTime];
-	self.session=[self.session initWithDate:[NSDate date] andTotalRunning:self.totalRunned andTotalWalking:self.totalWalked andTimeRunning:self.presetTimeToRun andTimewalking:self.presetTimeToWalk andDistance:distance andAvSpeed:avSpeed andRoute:self.route];
+	NSInteger avSpeed=[sessionHelper calculateSpeedWithDistance:distance andTime:totalSessionTime];
+	
+	double kCal=[sessionHelper calculateKcalWithWalking:self.totalWalked andRunning:self.totalRunned andDistance:distance];
+	
+	self.session=[self.session initWithDate:[NSDate date] andTotalRunning:self.totalRunned andTotalWalking:self.totalWalked andTimeRunning:self.presetTimeToRun andTimewalking:self.presetTimeToWalk andDistance:distance andAvSpeed:avSpeed andKcal:kCal  andRoute:self.route];
 	
 }
 

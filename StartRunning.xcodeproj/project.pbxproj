@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F170A10197667310087C438 /* PlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F170A0F197667310087C438 /* PlistManager.m */; };
-		3F170A13197689AC0087C438 /* RouteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F170A12197689AC0087C438 /* RouteManager.m */; };
+		3F170A13197689AC0087C438 /* SessionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F170A12197689AC0087C438 /* SessionHelper.m */; };
 		3F170A1619769BB40087C438 /* GenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F170A1519769BB40087C438 /* GenderViewController.m */; };
 		3F170A191976A3C50087C438 /* SummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F170A181976A3C50087C438 /* SummaryViewController.m */; };
 		3F170A1B1976AA450087C438 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F170A1A1976AA450087C438 /* back.png */; };
@@ -45,6 +45,8 @@
 		3F26FD2919759E0500106EFC /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F26FD2619759E0500106EFC /* stop.png */; };
 		3F26FD2A19759E0500106EFC /* TimersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F26FD2819759E0500106EFC /* TimersManager.m */; };
 		3F26FD2C19759E3400106EFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F26FD2B19759E3400106EFC /* Main.storyboard */; };
+		3FB166D1197BD53A00EE1346 /* ProfileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB166D0197BD53A00EE1346 /* ProfileHelper.m */; };
+		3FB166D4197C06B300EE1346 /* SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB166D3197C06B300EE1346 /* SessionsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +62,8 @@
 /* Begin PBXFileReference section */
 		3F170A0E197667310087C438 /* PlistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistManager.h; sourceTree = "<group>"; };
 		3F170A0F197667310087C438 /* PlistManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistManager.m; sourceTree = "<group>"; };
-		3F170A11197689AC0087C438 /* RouteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteManager.h; sourceTree = "<group>"; };
-		3F170A12197689AC0087C438 /* RouteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteManager.m; sourceTree = "<group>"; };
+		3F170A11197689AC0087C438 /* SessionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionHelper.h; sourceTree = "<group>"; };
+		3F170A12197689AC0087C438 /* SessionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionHelper.m; sourceTree = "<group>"; };
 		3F170A1419769BB40087C438 /* GenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderViewController.h; sourceTree = "<group>"; };
 		3F170A1519769BB40087C438 /* GenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderViewController.m; sourceTree = "<group>"; };
 		3F170A171976A3C50087C438 /* SummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryViewController.h; sourceTree = "<group>"; };
@@ -111,6 +113,10 @@
 		3F26FD2719759E0500106EFC /* TimersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimersManager.h; sourceTree = "<group>"; };
 		3F26FD2819759E0500106EFC /* TimersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimersManager.m; sourceTree = "<group>"; };
 		3F26FD2B19759E3400106EFC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3FB166CF197BD53A00EE1346 /* ProfileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHelper.h; sourceTree = "<group>"; };
+		3FB166D0197BD53A00EE1346 /* ProfileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHelper.m; sourceTree = "<group>"; };
+		3FB166D2197C06B300EE1346 /* SessionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsTableViewController.h; sourceTree = "<group>"; };
+		3FB166D3197C06B300EE1346 /* SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,14 +231,16 @@
 				3F26FD1219759D1100106EFC /* Session.m */,
 				3F170A3219793D570087C438 /* Route.h */,
 				3F170A3319793D570087C438 /* Route.m */,
-				3F170A11197689AC0087C438 /* RouteManager.h */,
-				3F170A12197689AC0087C438 /* RouteManager.m */,
+				3F170A11197689AC0087C438 /* SessionHelper.h */,
+				3F170A12197689AC0087C438 /* SessionHelper.m */,
 				3F170A0E197667310087C438 /* PlistManager.h */,
 				3F170A0F197667310087C438 /* PlistManager.m */,
 				3F26FD2719759E0500106EFC /* TimersManager.h */,
 				3F26FD2819759E0500106EFC /* TimersManager.m */,
 				3F170A2719790E420087C438 /* GPSManager.h */,
 				3F170A2819790E420087C438 /* GPSManager.m */,
+				3FB166CF197BD53A00EE1346 /* ProfileHelper.h */,
+				3FB166D0197BD53A00EE1346 /* ProfileHelper.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -256,6 +264,8 @@
 				3F170A181976A3C50087C438 /* SummaryViewController.m */,
 				3F170A22197823FE0087C438 /* FirstViewController.h */,
 				3F170A23197823FE0087C438 /* FirstViewController.m */,
+				3FB166D2197C06B300EE1346 /* SessionsTableViewController.h */,
+				3FB166D3197C06B300EE1346 /* SessionsTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -403,8 +413,10 @@
 				3F26FCB419759CA900106EFC /* AppDelegate.m in Sources */,
 				3F26FD1C19759D1100106EFC /* Session.m in Sources */,
 				3F170A191976A3C50087C438 /* SummaryViewController.m in Sources */,
-				3F170A13197689AC0087C438 /* RouteManager.m in Sources */,
+				3FB166D4197C06B300EE1346 /* SessionsTableViewController.m in Sources */,
+				3F170A13197689AC0087C438 /* SessionHelper.m in Sources */,
 				3F26FD1919759D1100106EFC /* Person.m in Sources */,
+				3FB166D1197BD53A00EE1346 /* ProfileHelper.m in Sources */,
 				3F170A3419793D570087C438 /* Route.m in Sources */,
 				3F26FD2219759DBA00106EFC /* main.m in Sources */,
 				3F170A2919790E420087C438 /* GPSManager.m in Sources */,

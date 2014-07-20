@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface GPSManager : NSObject
 
 -(void)startCounter:(BOOL)counterStarted;
