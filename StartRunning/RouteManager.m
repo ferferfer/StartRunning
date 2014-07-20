@@ -45,7 +45,9 @@
 }
 
 -(NSInteger)calculateSpeedWithDistance:(NSInteger)distance andTime:(NSInteger)time{
-	
+	if (time==0) {
+    return 0;
+	}
 	return distance/time/120;
 }
 

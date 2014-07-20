@@ -56,8 +56,6 @@
   self.textFieldTimeRunning.delegate = self;
 	[[UITabBar appearance] setSelectedImageTintColor:[self colorWithRed:46 green:204 blue:113]];
 	self.isFirstTime=YES;
-	self.textFieldTimeRunning.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToRun];
-	self.textFieldTimeWalking.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToWalk];
 }
 
 -(Route *)route{
@@ -305,9 +303,9 @@
 	}
 	
 	self.totalSeconds--;
-
+	
 	[self.route addPoint:self.gpsManager.locationDictionary];
-
+	
 }
 - (IBAction)pausePressed:(id)sender {
 	[self.walkingTimer invalidate];
@@ -320,16 +318,14 @@
 
 - (IBAction)stopPressed:(id)sender {
 	
-
-	
 	[self.walkingTimer invalidate];
 	self.walkingTimer = nil;
-
+	
 	
 	[self.runningTimer invalidate];
 	self.runningTimer = nil;
-
-
+	
+	
 	self.playButton.hidden=NO;
 	self.pauseButton.hidden=YES;
 	
@@ -337,6 +333,18 @@
 	
 	[self.gpsManager startCounter:NO];
 	
+	[self restartCounters];
+	
+}
+
+-(void)restartCounters{
+	self.textFieldTimeRunning.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToRun];
+	self.textFieldTimeWalking.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToWalk];
+	self.totalRunned=0;
+	self.totalWalked=0;
+	self.route=[[Route alloc]init];
+	self.labelRun.text=@"Run";
+	self.labelWalk.text=@"Walk";
 }
 
 -(void)saveSession{
@@ -358,7 +366,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 	
 	if ([[segue identifier] isEqualToString:@"summarySegue"]) {
-
 		
 		[self saveSession];
 		

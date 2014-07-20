@@ -36,11 +36,16 @@
 -(void)startCounter:(BOOL)counterStarted{
 	
 	if (counterStarted) {
-		self.locationManager.delegate        = self;  //SET YOUR DELEGATE HERE
-		self.locationManager.desiredAccuracy = kCLLocationAccuracyBest; //SET THIS TO SPECIFY THE ACCURACY
-		[self.locationManager startUpdatingLocation];
+		if ([CLLocationManager locationServicesEnabled]) {
+			self.locationManager.delegate        = self;  //SET YOUR DELEGATE HERE
+			self.locationManager.desiredAccuracy = kCLLocationAccuracyBest; //SET THIS TO SPECIFY THE ACCURACY
+			self.locationManager.distanceFilter=10;
+			[self.locationManager startUpdatingLocation];
+		}
 	}else{
-		[self.locationManager stopUpdatingLocation];
+		if ([CLLocationManager locationServicesEnabled]) {
+			[self.locationManager stopUpdatingLocation];
+		}
 	}
 }
 
@@ -56,7 +61,7 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-
+	
 	CLLocationDegrees latitude=newLocation.coordinate.latitude;
 	CLLocationDegrees longitude=newLocation.coordinate.longitude;
 	
