@@ -14,5 +14,6 @@
 
 @property	(nonatomic,strong)Person *person;
 @property	(nonatomic,strong)Session	*session;
+@property (nonatomic)BOOL navigationBar;
 
 @end

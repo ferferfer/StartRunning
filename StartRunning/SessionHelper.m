@@ -65,7 +65,7 @@
 	if (time==0) {
     return 0;
 	}
-	return distance/time/120;
+	return (distance/time)*3.6;
 }
 
 -(void) loadRoute:(NSArray *)coordinates{

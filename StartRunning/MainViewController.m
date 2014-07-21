@@ -367,6 +367,7 @@
 		[self.plistManager addSession:self.session];
 		SummaryViewController	*summaryView = [segue destinationViewController];
 		summaryView.session = self.session;
+		summaryView.navigationBar=NO;
 	}
 }
 

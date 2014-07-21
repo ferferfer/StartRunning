@@ -9,6 +9,8 @@
 #import "SummaryViewController.h"
 #import "TimersManager.h"
 #import "SessionHelper.h"
+#import "MapViewController.h"
+
 @import MapKit;
 
 
@@ -20,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *totalCalories;
 @property (weak, nonatomic) IBOutlet UITextField *totalAvSpeed;
 @property (weak, nonatomic) IBOutlet MKMapView *map;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @property (nonatomic,strong) TimersManager *timersManager;
 @property (nonatomic,strong) SessionHelper *sessionHelper;
@@ -47,6 +50,16 @@
 -(void)viewWillAppear:(BOOL)animated{
 	[self loadSessionData];
 	[self loadMapData];
+	if (self.navigationBar) {
+    [self redraw];
+	}else{
+		self.navigationController.navigationBarHidden=YES;
+	}
+	
+}
+
+-(void)redraw{
+	self.backButton.hidden=YES;
 }
 
 - (void)viewDidLoad{
@@ -96,15 +109,14 @@
 	
 }
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+	 MapViewController *mapView=[segue destinationViewController];
+	 mapView.session=self.session;
  }
- */
+
 
 @end

@@ -9,16 +9,20 @@
 #import "GenderViewController.h"
 #import "PlistManager.h"
 
+#define degreesToRadians(x) (M_PI * x / 180.0)
+
 @interface GenderViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *genderPicker;
 @property (weak, nonatomic) IBOutlet UITextField *weightTextField;
 @property (weak, nonatomic) IBOutlet UITextField *heightTextField;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (weak, nonatomic) IBOutlet UIImageView *arrowView;
 @property	(nonatomic,strong)NSString *gender;
 @property	(nonatomic,strong)PlistManager *plistManager;
 @property	(nonatomic,strong)NSArray *genderArray;
 @property	(nonatomic,strong)Person *person;
+
 
 
 @end
@@ -37,8 +41,35 @@
 		self.okButton.hidden=YES;
 	}
 
+
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+	self.arrowView.layer.anchorPoint = CGPointMake(0.5,1);
+	self.arrowView.layer.position=CGPointMake(self.arrowView.center.x + self.arrowView.frame.size.width/2,
+																						self.arrowView.center.y + self.arrowView.frame.size.height/2);
+	[self moveArrow];
+}
+
+-(void)moveArrow{
+	
+	[UIView animateWithDuration:0.5
+												delay:0.0
+											options:UIViewAnimationOptionCurveEaseIn
+									 animations:^{
+
+										 double imc=[self calculateAngleWithIMC:[self calculateIMC]];
+										 self.arrowView.layer.transform = CATransform3DMakeRotation(imc-M_PI_2, 0, 0, 1);
+									 }completion:^(BOOL finished){
+
+									 }
+	 ];
+
+	
+	
+
+	
+}
 
 -(void)loadDataFromPerson{
 	self.weightTextField.text=[NSString stringWithFormat:@"%i",self.person.weight];
@@ -102,20 +133,27 @@
 	if([textField.accessibilityLabel isEqualToString:@"height"]){
 		self.person.height=[textField.text intValue];
 	}
-
+	[self moveArrow];
 	[self.plistManager updateProfile:self.person];
 }
 
 
--(double)calculateIMC{
+-(CGFloat)calculateIMC{
 	Person *person=[[Person alloc]init];
 	person=[self.plistManager loadProfile];
 	if (person.height==0 || person.weight==0) {
     return 0;
 	}
-	double imc=person.weight/(person.height*person.height);
+	CGFloat squareHeight=(person.height*person.height)/10000;
+	
+	CGFloat imc=person.weight/squareHeight;
 	
 	return imc;
+}
+
+-(CGFloat)calculateAngleWithIMC:(double)imc{
+	//180 degrees and 24 sections (from 16 to 40) so the operation is:
+	return  degreesToRadians(((imc-16)*180)/24);
 }
 
 - (IBAction)okButtonPressed:(id)sender {

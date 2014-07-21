@@ -9,6 +9,9 @@
 #import "SessionsTableViewController.h"
 #import "PlistManager.h"
 #import "SummaryViewController.h"
+#import "SessionTableViewCell.h"
+#import "TimersManager.h"
+#import "UIColor+CustomColor.h"
 
 @interface SessionsTableViewController ()
 
@@ -35,12 +38,13 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-		[self.tableView reloadData];
+	[self.tableView reloadData];
 }
 
 - (void)viewDidLoad{
 	[super viewDidLoad];
-  
+  self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
+	self.navigationController.navigationBar.backgroundColor=[UIColor appGreenColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,28 +63,31 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-
+	
 	return [self.plistManager numberofSessionsInPlist]-1;
 }
 
 
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sessionCell" forIndexPath:indexPath];
-	 Session *indexSession=[[Session alloc]init];
-	 indexSession=[[self.plistManager arrayOfSessions]objectAtIndex:indexPath.row];
-
-	 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	 [formatter setDateFormat:@"dd-MM-yyyy"];
-	 NSDate *date=[indexSession valueForKey:@"sessionDate"];
-	 NSString *stringFromDate = [formatter stringFromDate:date];
-	 
-	 NSString *intervalRun=[indexSession valueForKey:@"timeRunning"];
-	 	 NSString *intervalWalk=[indexSession valueForKey:@"timeWalking"];
-	 cell.textLabel.text=stringFromDate;
-	 
-	 
- return cell;
- }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+	
+	SessionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sessionCell" forIndexPath:indexPath];
+	Session *indexSession=[[Session alloc]init];
+	indexSession=[[self.plistManager arrayOfSessions]objectAtIndex:indexPath.row];
+	
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateFormat:@"dd/MM/yyyy"];
+	NSDate *date=[indexSession valueForKey:@"sessionDate"];
+	NSString *stringFromDate = [formatter stringFromDate:date];
+	
+	NSNumber *intervalRun=[indexSession valueForKey:@"timeRunning"];
+	NSNumber *intervalWalk=[indexSession valueForKey:@"timeWalking"];
+	TimersManager *timerManager=[[TimersManager alloc]init];
+	cell.timeRunnedLabel.text=[timerManager returnTimeFormatWithSeconds:[intervalRun intValue]];
+	cell.timeWalkedLabel.text=[timerManager returnTimeFormatWithSeconds:[intervalWalk intValue]];
+	cell.dateLabel.text=stringFromDate;
+	
+	return cell;
+}
 
 
 
@@ -93,9 +100,15 @@
 		NSIndexPath *indexPath=[self.tableView indexPathForSelectedRow];
 		self.session=[self.plistManager loadSessionWithIndex:indexPath.row+1];
 		summary.session=self.session;
+		summary.navigationBar=YES;
 	}
 	
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return 68;
+}
+
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
