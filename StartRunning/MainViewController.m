@@ -16,6 +16,7 @@
 #import "PlistManager.h"
 #import "GenderViewController.h"
 #import "GPSManager.h"
+#import "UIColor+CustomColor.h"
 @import AVFoundation;
 
 @interface MainViewController ()<UITextFieldDelegate>
@@ -54,7 +55,7 @@
 	[super viewDidLoad];
 	self.textFieldTimeWalking.delegate = self;
   self.textFieldTimeRunning.delegate = self;
-	[[UITabBar appearance] setSelectedImageTintColor:[self colorWithRed:46 green:204 blue:113]];
+	[[UITabBar appearance] setSelectedImageTintColor:[UIColor appGreenColor]];
 	self.isFirstTime=YES;
 }
 
@@ -105,14 +106,6 @@
     _session=[[Session alloc]init];
 	}
 	return _session;
-}
-
-
-- (UIColor *)colorWithRed:(NSUInteger)red
-                    green:(NSUInteger)green
-                     blue:(NSUInteger)blue
-{
-	return [UIColor colorWithRed:red/255.f green:green/255.f blue:blue/255.f alpha:1.f];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{

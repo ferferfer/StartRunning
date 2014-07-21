@@ -236,6 +236,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="History" image="iconMenu.png" id="qra-TK-XJK"/>
+                    <connections>
+                        <outlet property="tableView" destination="axc-Va-Trf" id="Y6O-9c-hEv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K0e-tv-OBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

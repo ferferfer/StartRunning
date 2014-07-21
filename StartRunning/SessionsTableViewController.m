@@ -13,12 +13,12 @@
 @interface SessionsTableViewController ()
 
 @property(nonatomic,strong)PlistManager *plistManager;
+@property(nonatomic,strong)Session *session;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation SessionsTableViewController{
-Session *session;
-}
+@implementation SessionsTableViewController
 
 -(PlistManager *)plistManager{
 	if (_plistManager==nil) {
@@ -27,13 +27,15 @@ Session *session;
 	return _plistManager;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-	self = [super initWithStyle:style];
-	if (self) {
-		// Custom initialization
+-(Session *)session{
+	if (_session==nil) {
+    _session=[[Session alloc]init];
 	}
-	return self;
+	return _session;
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+		[self.tableView reloadData];
 }
 
 - (void)viewDidLoad{
@@ -71,19 +73,29 @@ Session *session;
 	 [formatter setDateFormat:@"dd-MM-yyyy"];
 	 NSDate *date=[indexSession valueForKey:@"sessionDate"];
 	 NSString *stringFromDate = [formatter stringFromDate:date];
+	 
+	 NSString *intervalRun=[indexSession valueForKey:@"timeRunning"];
+	 	 NSString *intervalWalk=[indexSession valueForKey:@"timeWalking"];
 	 cell.textLabel.text=stringFromDate;
-
+	 
+	 
  return cell;
  }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-	session=[self.plistManager loadSessionWithIndex:indexPath.row+1];
-	[self performSegueWithIdentifier:@"goToSummarySegue" sender:self];
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+	
+	if([segue.identifier isEqualToString:@"goToSummarySegue"]) {
+		SummaryViewController* summary = [segue destinationViewController];
+		NSIndexPath *indexPath=[self.tableView indexPathForSelectedRow];
+		self.session=[self.plistManager loadSessionWithIndex:indexPath.row+1];
+		summary.session=self.session;
+	}
 	
 }
-
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -123,17 +135,6 @@ Session *session;
  */
 
 
- #pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-
-	if([segue.identifier isEqualToString:@"goToSummarySegue"]) {
-		SummaryViewController* summary = segue.destinationViewController;
-
-		summary.session=session;
-	}
-
-}
 
 
 @end

@@ -14,4 +14,5 @@
 @property(nonatomic,strong)NSMutableDictionary *pointCoordinates;
 
 -(void)addPoint:(NSDictionary *)coordinate;
+-(id)initWithArrayofCoordinates:(NSArray *)array;
 @end

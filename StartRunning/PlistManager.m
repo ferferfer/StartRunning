@@ -37,6 +37,8 @@
 	NSString *path=[self pathOfPlistInDocumentsFolder];
 	NSMutableArray *contentArray = [NSArray arrayWithContentsOfFile:path];
 	NSMutableDictionary *data=[contentArray objectAtIndex:index];
+	NSMutableArray *arrayOfCoordinates= [data objectForKey:@"route"];
+	Route *route=[[Route alloc]initWithArrayofCoordinates:arrayOfCoordinates];
 	Session *session=[[Session alloc]initWithDate:[data valueForKey:@"sessionDate"]
 																andTotalRunning:[[data valueForKey:@"totalRunning"] intValue]
 																andTotalWalking:[[data valueForKey:@"totalWalking"] intValue]
@@ -45,7 +47,7 @@
 																		andDistance:[[data valueForKey:@"distance"] doubleValue]
 																		 andAvSpeed:[[data valueForKey:@"avSpeed"] doubleValue]
 																				andKcal:[[data valueForKey:@"kcal"] doubleValue]
-																			 andRoute:[data objectForKey:@"route"]];
+																			 andRoute:route];
 	
 	return session;
 	

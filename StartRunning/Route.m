@@ -18,10 +18,16 @@
 }
 
 - (id)init{
+	NSArray *array=[[NSArray alloc]init];
+	self = [self initWithArrayofCoordinates:array];
+	return self;
+}
+
+-(id)initWithArrayofCoordinates:(NSArray *)array{
 	self = [super init];
 	if (self) {
 		_pointCoordinates=[[NSMutableDictionary alloc]init];
-		_arrayOfCoordinates=[[NSMutableArray alloc]init];
+		_arrayOfCoordinates=[array mutableCopy];
 	}
 	return self;
 }

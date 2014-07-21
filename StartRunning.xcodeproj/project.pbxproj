@@ -47,6 +47,7 @@
 		3F26FD2C19759E3400106EFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F26FD2B19759E3400106EFC /* Main.storyboard */; };
 		3FB166D1197BD53A00EE1346 /* ProfileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB166D0197BD53A00EE1346 /* ProfileHelper.m */; };
 		3FB166D4197C06B300EE1346 /* SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB166D3197C06B300EE1346 /* SessionsTableViewController.m */; };
+		3FB166D7197CF7CB00EE1346 /* UIColor+CustomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB166D6197CF7CB00EE1346 /* UIColor+CustomColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,8 @@
 		3FB166D0197BD53A00EE1346 /* ProfileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHelper.m; sourceTree = "<group>"; };
 		3FB166D2197C06B300EE1346 /* SessionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionsTableViewController.h; sourceTree = "<group>"; };
 		3FB166D3197C06B300EE1346 /* SessionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionsTableViewController.m; sourceTree = "<group>"; };
+		3FB166D5197CF7CB00EE1346 /* UIColor+CustomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColor.h"; sourceTree = "<group>"; };
+		3FB166D6197CF7CB00EE1346 /* UIColor+CustomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColor.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +244,8 @@
 				3F170A2819790E420087C438 /* GPSManager.m */,
 				3FB166CF197BD53A00EE1346 /* ProfileHelper.h */,
 				3FB166D0197BD53A00EE1346 /* ProfileHelper.m */,
+				3FB166D5197CF7CB00EE1346 /* UIColor+CustomColor.h */,
+				3FB166D6197CF7CB00EE1346 /* UIColor+CustomColor.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 			files = (
 				3F170A24197823FE0087C438 /* FirstViewController.m in Sources */,
 				3F170A10197667310087C438 /* PlistManager.m in Sources */,
+				3FB166D7197CF7CB00EE1346 /* UIColor+CustomColor.m in Sources */,
 				3F26FCB419759CA900106EFC /* AppDelegate.m in Sources */,
 				3F26FD1C19759D1100106EFC /* Session.m in Sources */,
 				3F170A191976A3C50087C438 /* SummaryViewController.m in Sources */,
