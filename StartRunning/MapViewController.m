@@ -12,6 +12,7 @@
 
 @interface MapViewController ()<MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *map;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *styleController;
 @property (nonatomic,strong)MKPolylineView *routeLineView;
 @property (nonatomic,copy)NSArray *arrayOfCoordinates;
 
@@ -37,6 +38,12 @@
 	[super viewDidLoad];
 	self.arrayOfCoordinates=[[NSArray alloc]initWithArray:self.session.route.arrayOfCoordinates];
 	[self loadMapData];
+  self.navigationController.navigationBarHidden=NO;
+	self.tabBarController.tabBar.hidden=YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+	self.tabBarController.tabBar.hidden=NO;
 }
 
 -(void)loadMapData{
@@ -65,10 +72,23 @@
 	return overlayView;
 	
 }
-
-- (IBAction)backPressed:(id)sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)stylePressed:(id)sender {
+	switch (self.styleController.selectedSegmentIndex) {
+		case 0:
+			[self.map setMapType:MKMapTypeSatellite];
+			break;
+		case 1:
+			[self.map setMapType:MKMapTypeStandard];
+			break;
+		case 2:
+			[self.map setMapType:MKMapTypeHybrid];
+			break;
+		default:
+			
+			break;
+	}
 }
+
 
 /*
  #pragma mark - Navigation

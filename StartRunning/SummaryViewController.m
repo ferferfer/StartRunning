@@ -54,6 +54,7 @@
     [self redraw];
 	}else{
 		self.navigationController.navigationBarHidden=YES;
+		self.tabBarController.tabBar.hidden=YES;
 	}
 	
 }
@@ -114,6 +115,8 @@
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+	 
+	 
 	 MapViewController *mapView=[segue destinationViewController];
 	 mapView.session=self.session;
  }

@@ -107,7 +107,8 @@
 	[profile setObject:@(person.height) forKey:@"height"];
 	[profile setObject:@(person.weight) forKey:@"weight"];
 	
-	NSMutableArray *array=[[NSMutableArray alloc]init];
+	NSMutableArray *array=[NSArray arrayWithContentsOfFile:filePath];
+	[array removeObjectAtIndex:0];
 	[array insertObject:profile atIndex:0];
 	[array writeToFile:filePath atomically: YES];
 	

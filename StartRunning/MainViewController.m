@@ -17,9 +17,11 @@
 #import "GenderViewController.h"
 #import "GPSManager.h"
 #import "UIColor+CustomColor.h"
+#import "TextFormateer.h"
+@import MediaPlayer;
 @import AVFoundation;
 
-@interface MainViewController ()<UITextFieldDelegate>
+@interface MainViewController ()<UITextFieldDelegate,AVSpeechSynthesizerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textFieldTimeWalking;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldTimeRunning;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
@@ -46,9 +48,14 @@
 @property	(nonatomic,strong)PlistManager	*plistManager;
 @property	(nonatomic,strong)GenderViewController	*genderViewController;
 @property	(nonatomic,strong)GPSManager *gpsManager;
+@property	(nonatomic,strong)MPMusicPlayerController *musicPlayerController;
+
+
 @end
 
-@implementation MainViewController
+@implementation MainViewController{
+	BOOL wasPlaying;
+}
 
 
 - (void)viewDidLoad{
@@ -57,6 +64,13 @@
   self.textFieldTimeRunning.delegate = self;
 	[[UITabBar appearance] setSelectedImageTintColor:[UIColor appGreenColor]];
 	self.isFirstTime=YES;
+}
+
+-(MPMusicPlayerController *)musicPlayerController{
+	if (_musicPlayerController==nil) {
+    _musicPlayerController=[[MPMusicPlayerController alloc]init];
+	}
+	return _musicPlayerController;
 }
 
 -(Route *)route{
@@ -113,91 +127,42 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-	NSString *mins;
-	NSString *secs;
+
 	if (textField == self.textFieldTimeWalking) {
-		//The user left the imput this way 12:3, the logic says that he wants to input 01:23
-		if (self.textFieldTimeWalking.text.length ==4) {
-			mins=[self.textFieldTimeWalking.text substringToIndex:1];
-			secs=[[self.textFieldTimeWalking.text substringFromIndex:1] stringByReplacingOccurrencesOfString:@":" withString:@""];
-			self.textFieldTimeWalking.text=[NSString stringWithFormat:@"0%@:%@",mins,secs ];
-		}
-		if (self.textFieldTimeWalking.text.length<3) {
-			//the user cancelled
-			if (self.textFieldTimeWalking.text.length==0) {
-				mins=@"00";
-			}
-			//The user left the imput this way 1, the logic says that he wants to input 01:00
-			if (self.textFieldTimeWalking.text.length==1) {
-				mins=[NSString stringWithFormat:@"0%@",self.textFieldTimeWalking.text];
-			}
-			//The user left the imput this way 10, the logic says that he wants to input 10:00
-			if (self.textFieldTimeWalking.text.length==2) {
-				mins=self.textFieldTimeWalking.text;
-			}
-			secs=@"00";
-			self.textFieldTimeWalking.text=[NSString stringWithFormat:@"%@:%@",mins,secs ];
-		}
+		self.textFieldTimeWalking.text =[TextFormateer returnCorrectFormatForTextField:textField];
 	}
 	if (textField == self.textFieldTimeRunning) {
-		//The user left the imput this way 12:3, the logic says that he wants to input 01:23
-		if (self.textFieldTimeRunning.text.length ==4) {
-			mins=[self.textFieldTimeRunning.text substringToIndex:1];
-			secs=[[self.textFieldTimeRunning.text substringFromIndex:1] stringByReplacingOccurrencesOfString:@":" withString:@""];
-			self.textFieldTimeRunning.text=[NSString stringWithFormat:@"0%@:%@",mins,secs ];
-		}
-		if (self.textFieldTimeRunning.text.length<3) {
-			//the user cancelled
-			if (self.textFieldTimeRunning.text.length==0) {
-				mins=@"00";
-			}
-			//The user left the imput this way 1, the logic says that he wants to input 01:00
-			if (self.textFieldTimeRunning.text.length==1) {
-				mins=[NSString stringWithFormat:@"0%@",self.textFieldTimeRunning.text];
-			}
-			//The user left the imput this way 10, the logic says that he wants to input 10:00
-			if (self.textFieldTimeRunning.text.length==2) {
-				mins=self.textFieldTimeRunning.text;
-			}
-			secs=@"00";
-			self.textFieldTimeRunning.text=[NSString stringWithFormat:@"%@:%@",mins,secs ];
-		}
+		self.textFieldTimeRunning.text =[TextFormateer returnCorrectFormatForTextField:textField];
 	}
 	[self enableButtons];
 }
 
 -(void)enableButtons{
-	if ((![self.textFieldTimeRunning.text isEqual:@""] &&	![self.textFieldTimeWalking.text isEqual:@""]) &&
-			(![self.textFieldTimeRunning.text isEqual:@"00:00"] &&	![self.textFieldTimeWalking.text isEqual:@"00:00"]) ) {
+	if ([TextFormateer textFieldIsNillTime:self.textFieldTimeRunning] ||
+			[TextFormateer textFieldIsNillTime:self.textFieldTimeWalking]) {
+		self.playButton.enabled=NO;
+	}else{
     self.playButton.enabled=YES;
-		self.stopButton.enabled=YES;
 	}
 }
 
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
 	if ([self.textFieldTimeWalking isEditing]) {
-		if (self.textFieldTimeWalking.text)
-			if (self.textFieldTimeWalking.text.length + string.length >5) {
+		if([TextFormateer lengthMoreThan:5 ofTextField:self.textFieldTimeWalking andString:string]){
 				return NO;
 			}
-		if (self.textFieldTimeWalking.text.length ==2 && ![string isEqualToString:@""]) {
-			self.textFieldTimeWalking.text=[self.textFieldTimeWalking.text stringByAppendingString:@":"];
+		if ([TextFormateer shouldAddColonTo:self.textFieldTimeWalking withString:string]) {
+			self.textFieldTimeWalking.text=[TextFormateer addColonTo:textField];
 			return YES;
 		}
 	}
-	
 	if ([self.textFieldTimeRunning isEditing]) {
-		if (self.textFieldTimeWalking.text.length == 4) {
-			NSString *mins=[self.textFieldTimeWalking.text substringToIndex:1];
-			NSString *secs=[[self.textFieldTimeWalking.text substringFromIndex:1] stringByReplacingOccurrencesOfString:@":" withString:@""];
-			self.textFieldTimeWalking.text=[NSString stringWithFormat:@"0%@:%@",mins,secs ];
-		}
-		if (self.textFieldTimeRunning.text.length + string.length >5) {
+		if([TextFormateer lengthMoreThan:5 ofTextField:self.textFieldTimeRunning andString:string]){
 			return NO;
 		}
-		if (self.textFieldTimeRunning.text.length ==2 && ![string isEqualToString:@""]) {
-			self.textFieldTimeRunning.text=[self.textFieldTimeRunning.text stringByAppendingString:@":"];
+		if ([TextFormateer shouldAddColonTo:self.textFieldTimeRunning withString:string]) {
+			self.textFieldTimeRunning.text=[TextFormateer addColonTo:textField];
 			return YES;
 		}
 	}
@@ -207,8 +172,10 @@
 
 
 - (IBAction)playPressed:(id)sender {
+
 	self.playButton.hidden=YES;
 	self.pauseButton.hidden=NO;
+	self.stopButton.enabled=YES;
 	[self.gpsManager startCounter:YES];
 	
 	//only first time
@@ -222,8 +189,8 @@
 		self.totalSeconds=[self.timersManager calculateSeconds:self.textFieldTimeWalking.text];
 		self.walkingTimer=[self startTimer];
 		
-		
 	}else{
+		
 		NSUInteger actualTime=[self.timersManager calculateSeconds:self.textFieldTimeRunning.text];
 		if (self.presetTimeToRun != actualTime) {
 			self.totalSeconds=[self.timersManager calculateSeconds:self.textFieldTimeRunning.text];
@@ -244,13 +211,28 @@
 }
 
 -(void)VibrateAndSay:(NSString *)sentence{
+	
+	[self.musicPlayerController nowPlayingItem];
+	AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+	if(audioSession.isOtherAudioPlaying){
+		wasPlaying = YES;
+	}
+	
 	AVSpeechSynthesizer * syn = [[AVSpeechSynthesizer alloc] init];
+	syn.delegate=self;
 	AVSpeechUtterance *string=[[AVSpeechUtterance alloc]initWithString:sentence];
 	[string setRate:AVSpeechUtteranceMinimumSpeechRate];
 	[string setVoice:[AVSpeechSynthesisVoice voiceWithLanguage:@"en-us"]];
 	[syn speakUtterance:string];
+
 	//Vibrate
 	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
+-(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance{
+	if(wasPlaying){
+		[self.musicPlayerController play];
+	}
 }
 
 -(void)change:(UILabel*)label withText:(NSString *)text{
@@ -269,6 +251,7 @@
 	if ([self.walkingTimer isValid]) {
 		self.textFieldTimeWalking.text = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
 	}
+	
 	if ([self.textFieldTimeWalking.text isEqualToString:@"00:-1"]) {
 		self.textFieldTimeWalking.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToWalk];
 		self.totalSeconds=[self.timersManager calculateSeconds:self.textFieldTimeRunning.text];
@@ -315,10 +298,8 @@
 	[self.walkingTimer invalidate];
 	self.walkingTimer = nil;
 	
-	
 	[self.runningTimer invalidate];
 	self.runningTimer = nil;
-	
 	
 	self.playButton.hidden=NO;
 	self.pauseButton.hidden=YES;
@@ -328,7 +309,6 @@
 	[self.gpsManager startCounter:NO];
 	
 	[self restartCounters];
-	
 }
 
 -(void)restartCounters{

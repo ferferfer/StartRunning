@@ -11,9 +11,9 @@
 @interface Person : NSObject
 
 @property	(nonatomic,copy)NSString *gender;
-@property	(nonatomic)NSUInteger weight;
-@property	(nonatomic)NSUInteger height;
+@property	(nonatomic)double weight;//in Kg
+@property	(nonatomic)NSUInteger height;//in cm
 
--(id)initWithGender:(NSString *)gender andHeight:(NSInteger)height andWeight:(NSInteger)weight;
+-(id)initWithGender:(NSString *)gender andHeight:(NSInteger)height andWeight:(double)weight;
 
 @end
