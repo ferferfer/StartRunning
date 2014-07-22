@@ -10,4 +10,6 @@
 
 @interface MediaHelper : NSObject
 
+-(void)VibrateAndSay:(NSString *)sentence;
+
 @end

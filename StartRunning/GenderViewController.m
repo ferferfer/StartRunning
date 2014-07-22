@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *heightTextField;
 @property (weak, nonatomic) IBOutlet UIButton *okButton;
 @property (weak, nonatomic) IBOutlet UILabel *imcText;
+@property (weak, nonatomic) IBOutlet UITextView *myIMCtext;
+@property (weak, nonatomic) IBOutlet UITextView *idealIMCtext;
 
 @property	(nonatomic,strong)NSString *gender;
 @property	(nonatomic,strong)PlistManager *plistManager;
@@ -34,6 +36,8 @@
 	
 	if(![self.plistManager plistExistInDocumentsFolder]){
 		self.okButton.hidden=NO;
+		self.imcText.hidden=NO;
+		self.idealIMCtext.hidden=NO;
 	}else{
 		self.person =[self.plistManager	loadProfile];
 		[self loadDataFromPerson];

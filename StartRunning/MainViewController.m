@@ -18,10 +18,9 @@
 #import "GPSManager.h"
 #import "UIColor+CustomColor.h"
 #import "TextFormateer.h"
-@import MediaPlayer;
-@import AVFoundation;
+#import "MediaHelper.h"
 
-@interface MainViewController ()<UITextFieldDelegate,AVSpeechSynthesizerDelegate>
+@interface MainViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textFieldTimeWalking;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldTimeRunning;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
@@ -48,14 +47,12 @@
 @property	(nonatomic,strong)PlistManager	*plistManager;
 @property	(nonatomic,strong)GenderViewController	*genderViewController;
 @property	(nonatomic,strong)GPSManager *gpsManager;
-@property	(nonatomic,strong)MPMusicPlayerController *musicPlayerController;
+@property (nonatomic,strong)MediaHelper *mediaHelper;
 
 
 @end
 
-@implementation MainViewController{
-	BOOL wasPlaying;
-}
+@implementation MainViewController
 
 
 - (void)viewDidLoad{
@@ -64,13 +61,14 @@
   self.textFieldTimeRunning.delegate = self;
 	[[UITabBar appearance] setSelectedImageTintColor:[UIColor appGreenColor]];
 	self.isFirstTime=YES;
+	
 }
 
--(MPMusicPlayerController *)musicPlayerController{
-	if (_musicPlayerController==nil) {
-    _musicPlayerController=[[MPMusicPlayerController alloc]init];
+-(MediaHelper *)mediaHelper{
+	if (_mediaHelper==nil) {
+    _mediaHelper=[[MediaHelper alloc]init];
 	}
-	return _musicPlayerController;
+	return _mediaHelper;
 }
 
 -(Route *)route{
@@ -210,31 +208,6 @@
 																				 repeats:YES];
 }
 
--(void)VibrateAndSay:(NSString *)sentence{
-	
-	[self.musicPlayerController nowPlayingItem];
-	AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-	if(audioSession.isOtherAudioPlaying){
-		wasPlaying = YES;
-	}
-	
-	AVSpeechSynthesizer * syn = [[AVSpeechSynthesizer alloc] init];
-	syn.delegate=self;
-	AVSpeechUtterance *string=[[AVSpeechUtterance alloc]initWithString:sentence];
-	[string setRate:AVSpeechUtteranceMinimumSpeechRate];
-	[string setVoice:[AVSpeechSynthesisVoice voiceWithLanguage:@"en-us"]];
-	[syn speakUtterance:string];
-
-	//Vibrate
-	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-}
-
--(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance{
-	if(wasPlaying){
-		[self.musicPlayerController play];
-	}
-}
-
 -(void)change:(UILabel*)label withText:(NSString *)text{
 	label.text=text;
 }
@@ -258,7 +231,7 @@
 		[self.walkingTimer invalidate];
 		self.walkingTimer = nil;
 		self.runningTimer=[self startTimer];
-		[self VibrateAndSay:@"Start running!"];
+		[self.mediaHelper VibrateAndSay:@"run"];
 		self.labelRun.text=@"Running";
 		self.labelWalk.text=@"Walk";
 		
@@ -272,7 +245,7 @@
 		self.runningTimer = nil;
 		self.walkingTimer=[self startTimer];
 		
-		[self VibrateAndSay:@"Start walking!"];
+		[self.mediaHelper VibrateAndSay:@"walk"];
 		self.labelRun.text=@"Run";
 		self.labelWalk.text=@"Walking";
 		
