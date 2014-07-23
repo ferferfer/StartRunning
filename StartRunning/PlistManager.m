@@ -95,7 +95,6 @@
 																		 andWeight:[[data valueForKey:@"weight"] intValue]];
 	
 	return person;
-	
 }
 
 -(void)updateProfile:(Person *)person{
@@ -128,6 +127,24 @@
 		[sessionsArray addObject:[array objectAtIndex:i]];
 	}
 	return sessionsArray;
+}
+
+-(void)deleteSession:(NSUInteger)index{
+	NSMutableArray *sessionsArray=[[self arrayOfSessions] mutableCopy];
+	NSMutableArray* auxSessions = sessionsArray.mutableCopy;
+	[auxSessions removeObjectAtIndex:(index)];
+	Person *person=[[Person alloc]init];
+	person=[self loadProfile];
+	
+	NSMutableDictionary *profile=[[NSMutableDictionary alloc]init];
+	[profile setObject:person.gender forKey:@"gender"];
+	[profile setObject:@(person.height) forKey:@"height"];
+	[profile setObject:@(person.weight) forKey:@"weight"];
+	[auxSessions insertObject:profile atIndex:0];
+	
+
+	[auxSessions writeToFile:[self pathOfPlistInDocumentsFolder] atomically: YES];
+	
 }
 
 @end

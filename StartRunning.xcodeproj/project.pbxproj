@@ -48,6 +48,7 @@
 		3F9A9363197E4C7000106CC9 /* IMCcalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A9362197E4C7000106CC9 /* IMCcalculatorTests.m */; };
 		3F9A9377197E71BE00106CC9 /* TextFormateer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A9376197E71BE00106CC9 /* TextFormateer.m */; };
 		3F9A937A197EA58200106CC9 /* MediaHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A9379197EA58200106CC9 /* MediaHelper.m */; };
+		3F9A937F197ED78400106CC9 /* CustomSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A937E197ED78400106CC9 /* CustomSection.m */; };
 		3FA81DEA197D641200B476F8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA81DE9197D641200B476F8 /* MapViewController.m */; };
 		3FA81DED197D6AF900B476F8 /* glass.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA81DEB197D6AF900B476F8 /* glass.png */; };
 		3FA81DEE197D6AF900B476F8 /* iconBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA81DEC197D6AF900B476F8 /* iconBack.png */; };
@@ -128,6 +129,8 @@
 		3F9A9376197E71BE00106CC9 /* TextFormateer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFormateer.m; sourceTree = "<group>"; };
 		3F9A9378197EA58200106CC9 /* MediaHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaHelper.h; sourceTree = "<group>"; };
 		3F9A9379197EA58200106CC9 /* MediaHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaHelper.m; sourceTree = "<group>"; };
+		3F9A937D197ED78400106CC9 /* CustomSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSection.h; sourceTree = "<group>"; };
+		3F9A937E197ED78400106CC9 /* CustomSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSection.m; sourceTree = "<group>"; };
 		3FA81DE8197D641200B476F8 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		3FA81DE9197D641200B476F8 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		3FA81DEB197D6AF900B476F8 /* glass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glass.png; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 				3F9A9360197E4ACD00106CC9 /* IMCcalculator.m */,
 				3F9A9378197EA58200106CC9 /* MediaHelper.h */,
 				3F9A9379197EA58200106CC9 /* MediaHelper.m */,
+				3F9A937D197ED78400106CC9 /* CustomSection.h */,
+				3F9A937E197ED78400106CC9 /* CustomSection.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -455,6 +460,7 @@
 				3F170A10197667310087C438 /* PlistManager.m in Sources */,
 				3FB166D7197CF7CB00EE1346 /* UIColor+CustomColor.m in Sources */,
 				3FA81DEA197D641200B476F8 /* MapViewController.m in Sources */,
+				3F9A937F197ED78400106CC9 /* CustomSection.m in Sources */,
 				3F26FCB419759CA900106EFC /* AppDelegate.m in Sources */,
 				3F26FD1C19759D1100106EFC /* Session.m in Sources */,
 				3F170A191976A3C50087C438 /* SummaryViewController.m in Sources */,

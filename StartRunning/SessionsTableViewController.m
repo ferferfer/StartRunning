@@ -12,6 +12,7 @@
 #import "SessionTableViewCell.h"
 #import "TimersManager.h"
 #import "UIColor+CustomColor.h"
+#import "CustomSection.h"
 
 @interface SessionsTableViewController ()<UITableViewDelegate>
 
@@ -43,8 +44,12 @@
 
 - (void)viewDidLoad{
 	[super viewDidLoad];
-  self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
 	self.navigationController.navigationBar.backgroundColor=[UIColor appGreenColor];
+	self.tableView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
+//	CAGradientLayer *bgLayer = [UIColor navigationMenuGradient];
+//	bgLayer.frame = self.tableView.bounds;
+//
+//	[self.tableView.layer insertSublayer:bgLayer atIndex:0];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -66,8 +71,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
 	SessionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sessionCell" forIndexPath:indexPath];
+
 	Session *indexSession=[[Session alloc]init];
 	indexSession=[[self.plistManager arrayOfSessions]objectAtIndex:indexPath.row];
+	
 	
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateFormat:@"dd/MM/yyyy"];
@@ -84,6 +91,40 @@
 	return cell;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+	if(self.searchDisplayController.searchResultsTableView==tableView)
+		return nil;
+	
+	UIView *header=[CustomSection sectionStyle];
+	
+	return header;
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return @"Delete";
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		NSLog(@"1-%d",[[self.plistManager arrayOfSessions]count]);
+		[self.plistManager deleteSession:indexPath.row];
+		NSLog(@"2-%d",[[self.plistManager arrayOfSessions]count]);
+		[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+		
+	}
+  
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return 40;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+	return 30;
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -98,8 +139,6 @@
 	
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 68;
-}
+
 
 @end

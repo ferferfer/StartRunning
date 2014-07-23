@@ -21,5 +21,6 @@
 -(NSInteger)numberofSessionsInPlist;
 -(NSArray *)arrayOfSessions;
 -(Session *)loadSessionWithIndex:(NSInteger)index;
+-(void)deleteSession:(NSUInteger)index;
 
 @end

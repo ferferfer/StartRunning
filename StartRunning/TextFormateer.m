@@ -35,6 +35,9 @@
 		secs=@"00";
 		time=[NSString stringWithFormat:@"%@:%@",mins,secs ];
 	}
+	if (textField.text.length==5) {
+    time=textField.text;
+	}
 	return time;
 }
 

@@ -10,8 +10,7 @@
 
 @implementation SessionTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
@@ -21,7 +20,6 @@
 
 - (void)awakeFromNib{
 	self.backgroundColor=[UIColor clearColor];
-
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

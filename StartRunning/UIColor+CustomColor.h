@@ -11,5 +11,7 @@
 @interface UIColor (CustomColor)
 
 + (UIColor *)appGreenColor;
++ (UIColor *)appRedColor;
++ (CAGradientLayer *) navigationMenuGradient;
 
 @end

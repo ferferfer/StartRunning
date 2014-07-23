@@ -119,6 +119,9 @@
 -(double)calculateKcalWithWalking:(NSInteger)walkTime
 													andRunning:(NSInteger)runTime
 												 andDistance:(NSInteger)distance{
+	if (walkTime==0 || runTime==0 || distance==0) {
+    return 0;
+	}
 	Person *person=[[Person alloc]init];
 	person=[self.plistManager loadProfile];
 	double kCal=0;

@@ -54,12 +54,19 @@
 
 @implementation MainViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder{
+	self = [super initWithCoder:coder];
+	if (self) {
+			[[UITabBar appearance] setSelectedImageTintColor:[UIColor appGreenColor]];
+	}
+	return self;
+}
 
 - (void)viewDidLoad{
 	[super viewDidLoad];
 	self.textFieldTimeWalking.delegate = self;
   self.textFieldTimeRunning.delegate = self;
-	[[UITabBar appearance] setSelectedImageTintColor:[UIColor appGreenColor]];
+
 	self.isFirstTime=YES;
 	
 }
