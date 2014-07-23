@@ -20,6 +20,9 @@
 
 - (void)awakeFromNib{
 	self.backgroundColor=[UIColor clearColor];
+	[self.editingAccessoryView setBackgroundColor:[UIColor whiteColor]];
+[self.editingAccessoryView setTintColor:[UIColor whiteColor]];
+	self.tintColor=[UIColor whiteColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

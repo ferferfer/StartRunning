@@ -44,6 +44,8 @@
 		3F26FD2919759E0500106EFC /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F26FD2619759E0500106EFC /* stop.png */; };
 		3F26FD2A19759E0500106EFC /* TimersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F26FD2819759E0500106EFC /* TimersManager.m */; };
 		3F26FD2C19759E3400106EFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F26FD2B19759E3400106EFC /* Main.storyboard */; };
+		3F8EDD321980355E0047E06C /* iconApp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F8EDD311980355E0047E06C /* iconApp.png */; };
+		3F8EDD3419803ECA0047E06C /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F8EDD3319803ECA0047E06C /* disclosure.png */; };
 		3F9A9361197E4ACD00106CC9 /* IMCcalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A9360197E4ACD00106CC9 /* IMCcalculator.m */; };
 		3F9A9363197E4C7000106CC9 /* IMCcalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A9362197E4C7000106CC9 /* IMCcalculatorTests.m */; };
 		3F9A9377197E71BE00106CC9 /* TextFormateer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A9376197E71BE00106CC9 /* TextFormateer.m */; };
@@ -122,6 +124,8 @@
 		3F26FD2719759E0500106EFC /* TimersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimersManager.h; sourceTree = "<group>"; };
 		3F26FD2819759E0500106EFC /* TimersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimersManager.m; sourceTree = "<group>"; };
 		3F26FD2B19759E3400106EFC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3F8EDD311980355E0047E06C /* iconApp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconApp.png; sourceTree = "<group>"; };
+		3F8EDD3319803ECA0047E06C /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
 		3F9A935F197E4ACD00106CC9 /* IMCcalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMCcalculator.h; sourceTree = "<group>"; };
 		3F9A9360197E4ACD00106CC9 /* IMCcalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMCcalculator.m; sourceTree = "<group>"; };
 		3F9A9362197E4C7000106CC9 /* IMCcalculatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMCcalculatorTests.m; sourceTree = "<group>"; };
@@ -318,8 +322,10 @@
 		3F26FD3019759E6000106EFC /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3F8EDD311980355E0047E06C /* iconApp.png */,
 				3F170A25197833EB0087C438 /* ok.png */,
 				3F170A1E1976E3290087C438 /* zapatilla.png */,
+				3F8EDD3319803ECA0047E06C /* disclosure.png */,
 				3F26FD2619759E0500106EFC /* stop.png */,
 				3F26FD0619759D1100106EFC /* background.png */,
 				3F26FD0719759D1100106EFC /* iconMenu.png */,
@@ -427,10 +433,12 @@
 				3F170A1F1976E3290087C438 /* zapatilla.png in Resources */,
 				3F170A26197833EB0087C438 /* ok.png in Resources */,
 				3F26FD1A19759D1100106EFC /* play.png in Resources */,
+				3F8EDD3419803ECA0047E06C /* disclosure.png in Resources */,
 				3F26FD1819759D1100106EFC /* pause.png in Resources */,
 				3F170A1B1976AA450087C438 /* back.png in Resources */,
 				3F26FD1519759D1100106EFC /* iconPlay.png in Resources */,
 				3F26FD1319759D1100106EFC /* background.png in Resources */,
+				3F8EDD321980355E0047E06C /* iconApp.png in Resources */,
 				3F26FD1619759D1100106EFC /* iconProfile.png in Resources */,
 				3FA81DED197D6AF900B476F8 /* glass.png in Resources */,
 				3F26FD2C19759E3400106EFC /* Main.storyboard in Resources */,

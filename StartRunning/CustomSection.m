@@ -13,22 +13,23 @@
 
 +(UIView *)sectionStyle{
 	UIView *header=[[UIView alloc]init];
-	header.backgroundColor=[UIColor appRedColor];
+	header.backgroundColor=[UIColor whiteColor];
 	
-	UILabel *run=[[UILabel alloc]initWithFrame:CGRectMake(20, 4, 75, 21)];
+	UILabel *run=[[UILabel alloc]initWithFrame:CGRectMake(12, 17, 75, 21)];
 	run.text=@"Runned";
-	run.font = [UIFont systemFontOfSize:21.0];
-	run.textAlignment=NSTextAlignmentCenter;
-	
-	UILabel *walk=[[UILabel alloc]initWithFrame:CGRectMake(100,4, 75, 21)];
+	run.font = [UIFont boldSystemFontOfSize:17.0];
+	run.textColor =[UIColor appGreenColor];
+
+	UILabel *walk=[[UILabel alloc]initWithFrame:CGRectMake(103,17, 75, 21)];
 	walk.text=@"Walked";
-	walk.font = [UIFont systemFontOfSize:21.0];
-	walk.textAlignment=NSTextAlignmentCenter;
+	walk.font = [UIFont boldSystemFontOfSize:17.0];
+	walk.textColor =[UIColor appGreenColor];
 	
-	UILabel *dateLbl=[[UILabel alloc]initWithFrame:CGRectMake(188,4, 93, 21)];
+	UILabel *dateLbl=[[UILabel alloc]initWithFrame:CGRectMake(215,17, 93, 21)];
 	dateLbl.text=@"Date";
-	dateLbl.font = [UIFont systemFontOfSize:21.0];
-	dateLbl.textAlignment=NSTextAlignmentCenter;
+	dateLbl.font = [UIFont boldSystemFontOfSize:17.0];
+	dateLbl.textColor =[UIColor appGreenColor];
+
 	
 	[header addSubview:run];
 	[header addSubview:walk];

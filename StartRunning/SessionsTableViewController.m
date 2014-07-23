@@ -71,13 +71,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	
 	SessionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sessionCell" forIndexPath:indexPath];
+	
+	UIImageView *checkmark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"disclosure"]];
+	cell.accessoryView = checkmark;
 
 	Session *indexSession=[[Session alloc]init];
 	indexSession=[[self.plistManager arrayOfSessions]objectAtIndex:indexPath.row];
 	
 	
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	[formatter setDateFormat:@"dd/MM/yyyy"];
+	[formatter setDateFormat:@"dd/MM"];
 	NSDate *date=[indexSession valueForKey:@"sessionDate"];
 	NSString *stringFromDate = [formatter stringFromDate:date];
 	
@@ -122,7 +125,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-	return 30;
+	return 50;
 }
 
 #pragma mark - Navigation

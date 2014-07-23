@@ -83,7 +83,7 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-	self.person.weight=[self.weightTextField.text intValue];
+	self.person.weight=[self.weightTextField.text doubleValue];
 	self.person.height=[self.heightTextField.text intValue];
 	[self.plistManager updateProfile:self.person];
 	self.imcText.text=[NSString stringWithFormat:@"%.1f",[self calculateIMC]];
