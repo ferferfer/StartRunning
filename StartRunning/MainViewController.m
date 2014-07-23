@@ -49,6 +49,11 @@
 @property	(nonatomic,strong)GPSManager *gpsManager;
 @property (nonatomic,strong)MediaHelper *mediaHelper;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textToWalk;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *minsToRun;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *minsToPlay;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *minsToStop;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *minsToPause;
 
 @end
 
@@ -66,8 +71,16 @@
 	[super viewDidLoad];
 	self.textFieldTimeWalking.delegate = self;
   self.textFieldTimeRunning.delegate = self;
-
 	self.isFirstTime=YES;
+	
+//	CGRect screenSize=[[UIScreen mainScreen] applicationFrame];
+//	if(screenSize.size.height!=568.0){
+//		self.textToWalk.constant=self.textToWalk.constant/1.18;
+//		self.minsToRun.constant=self.minsToRun.constant/1.18;
+//		self.minsToPlay.constant=self.minsToPlay.constant/1.18;
+//		self.minsToStop.constant=self.minsToStop.constant/1.18;
+//		self.minsToPause.constant=self.minsToPause.constant/1.18;
+//	}
 	
 }
 
