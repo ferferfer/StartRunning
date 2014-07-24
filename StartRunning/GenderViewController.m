@@ -36,12 +36,16 @@
 	
 	if(![self.plistManager plistExistInDocumentsFolder]){
 		self.okButton.hidden=NO;
-		self.imcText.hidden=NO;
-		self.idealIMCtext.hidden=NO;
+		self.imcText.hidden=YES;
+		self.idealIMCtext.hidden=YES;
+		self.myIMCtext.hidden=YES;
 	}else{
 		self.person =[self.plistManager	loadProfile];
 		[self loadDataFromPerson];
 		self.okButton.hidden=YES;
+		self.imcText.hidden=NO;
+		self.idealIMCtext.hidden=NO;
+		self.myIMCtext.hidden=NO;
 	}
 	
 }

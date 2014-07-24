@@ -49,7 +49,7 @@
 		if ([CLLocationManager locationServicesEnabled]) {
 			self.locationManager.delegate        = self;  //SET YOUR DELEGATE HERE
 			self.locationManager.desiredAccuracy = kCLLocationAccuracyBest; //SET THIS TO SPECIFY THE ACCURACY
-			self.locationManager.distanceFilter=30;
+			self.locationManager.distanceFilter=10;
 			[self.locationManager startUpdatingLocation];
 		}
 	}else{

@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCk-wl-aUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76" y="-512"/>
+            <point key="canvasLocation" x="-352" y="-493"/>
         </scene>
         <!--Gender View Controller - Profile-->
         <scene sceneID="r9T-La-qDs">
@@ -205,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2h-EV-IOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1167" y="7"/>
+            <point key="canvasLocation" x="147" y="75"/>
         </scene>
         <!--Sessions Table View Controller - History-->
         <scene sceneID="hnu-vE-BOg">
@@ -625,8 +625,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="BN5-Pq-FtR"/>
+        <segue reference="Ed5-oJ-ACI"/>
         <segue reference="olp-FI-511"/>
-        <segue reference="8Ma-uq-nRP"/>
+        <segue reference="A24-hQ-f9i"/>
     </inferredMetricsTieBreakers>
 </document>

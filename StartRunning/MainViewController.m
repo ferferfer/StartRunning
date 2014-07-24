@@ -178,6 +178,8 @@
 	self.playButton.hidden=YES;
 	self.pauseButton.hidden=NO;
 	self.stopButton.enabled=YES;
+	self.textFieldTimeRunning.enabled=NO;
+	self.textFieldTimeWalking.enabled=NO;
 	[self.gpsManager startCounter:YES];
 	
 	//only first time
@@ -240,7 +242,6 @@
 		self.labelWalk.text=@"Walk";
 		
 		self.totalWalked+=self.presetTimeToWalk;
-		
 	}
 	if ([self.textFieldTimeRunning.text isEqualToString:@"00:-1"]) {
 		self.textFieldTimeRunning.text=[self.timersManager returnTimeFormatWithSeconds:self.presetTimeToRun];
@@ -280,6 +281,9 @@
 	
 	self.playButton.hidden=NO;
 	self.pauseButton.hidden=YES;
+	
+	self.textFieldTimeRunning.enabled=YES;
+	self.textFieldTimeWalking.enabled=YES;
 	
 	self.isFirstTime=YES;
 	
