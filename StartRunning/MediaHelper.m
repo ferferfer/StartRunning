@@ -35,7 +35,7 @@
 -(AVSpeechUtterance *)speechWalk{
 	if (_speechWalk==nil) {
     _speechWalk=[[AVSpeechUtterance alloc]initWithString:@"Start Walking"];
-		[_speechWalk setRate:AVSpeechUtteranceDefaultSpeechRate];
+		[_speechWalk setRate:AVSpeechUtteranceMinimumSpeechRate];
 		[_speechWalk setVoice:[AVSpeechSynthesisVoice voiceWithLanguage:@"en-us"]];
 	}
 	return _speechWalk;
@@ -44,7 +44,7 @@
 -(AVSpeechUtterance *)speechRun{
 	if (_speechRun==nil) {
     _speechRun=[[AVSpeechUtterance alloc]initWithString:@"Start Running"];
-		[_speechRun setRate:AVSpeechUtteranceDefaultSpeechRate];
+		[_speechRun setRate:AVSpeechUtteranceMinimumSpeechRate];
 		[_speechRun setVoice:[AVSpeechSynthesisVoice voiceWithLanguage:@"en-us"]];
 	}
 	return _speechRun;

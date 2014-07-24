@@ -26,7 +26,6 @@
 -(id)initWithArrayofCoordinates:(NSArray *)array{
 	self = [super init];
 	if (self) {
-		_pointCoordinates=[[NSMutableDictionary alloc]init];
 		_arrayOfCoordinates=[array mutableCopy];
 	}
 	return self;

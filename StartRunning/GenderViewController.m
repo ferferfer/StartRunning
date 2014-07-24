@@ -62,7 +62,7 @@
 
 -(void)loadDataFromPerson{
 	self.weightTextField.text=[NSString stringWithFormat:@"%.1f",self.person.weight];
-	self.heightTextField.text=[NSString stringWithFormat:@"%i",self.person.height];
+	self.heightTextField.text=[NSString stringWithFormat:@"%lu",(unsigned long)self.person.height];
 	NSInteger row=[self.person.gender isEqualToString:@"Male"]?0:1;
 	[self.genderController setSelectedSegmentIndex:row];
 }

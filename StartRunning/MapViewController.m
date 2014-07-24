@@ -62,7 +62,7 @@
 		if(nil == self.routeLineView)			{
 			self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.sessionHelper.routeLine];
 			self.routeLineView.fillColor = [UIColor blueColor];
-			self.routeLineView.strokeColor = [UIColor whiteColor];
+			self.routeLineView.strokeColor = [UIColor blueColor];
 			self.routeLineView.lineWidth = 12;
 		}
 		

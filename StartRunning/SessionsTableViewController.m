@@ -110,13 +110,9 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		NSLog(@"1-%d",[[self.plistManager arrayOfSessions]count]);
 		[self.plistManager deleteSession:indexPath.row];
-		NSLog(@"2-%d",[[self.plistManager arrayOfSessions]count]);
 		[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-		
 	}
-  
 }
 
 

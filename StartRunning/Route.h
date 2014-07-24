@@ -11,7 +11,6 @@
 @interface Route : NSObject
 
 @property(nonatomic,strong)NSMutableArray *arrayOfCoordinates;
-@property(nonatomic,strong)NSMutableDictionary *pointCoordinates;
 
 -(void)addPoint:(NSDictionary *)coordinate;
 -(id)initWithArrayofCoordinates:(NSArray *)array;

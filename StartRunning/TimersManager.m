@@ -18,17 +18,17 @@
 }
 
 -(NSString *)returnTimeFormatWithSeconds:(NSUInteger)seconds{
-	NSUInteger mins=seconds/60;
-	NSUInteger secs=seconds%60;
+	NSInteger mins=seconds/60;
+	NSInteger secs=seconds%60;
 	if (mins<10) {
 		if (secs<10) {
-			return [NSString stringWithFormat:@"0%i:0%i",mins,secs];
+			return [NSString stringWithFormat:@"0%li:0%li",(long)mins,(long)secs];
 		}
-		return [NSString stringWithFormat:@"0%i:%i",mins,secs];
+		return [NSString stringWithFormat:@"0%li:%li",(long)mins,(long)secs];
 	}if (secs<10) {
-   	return [NSString stringWithFormat:@"%i:0%i",mins,secs];
+   	return [NSString stringWithFormat:@"%li:0%li",(long)mins,(long)secs];
 	}
-	return [NSString stringWithFormat:@"%i:%i",mins,secs];
+	return [NSString stringWithFormat:@"%li:%li",(long)mins,(long)secs];
 }
 
 @end

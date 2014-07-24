@@ -220,6 +220,7 @@
 				3F26FD2E19759E4F00106EFC /* View */,
 				3F26FD2D19759E4500106EFC /* Model */,
 				3F26FCBB19759CA900106EFC /* Images.xcassets */,
+				3FD96A241980CA9B00CE7CC4 /* Helpers */,
 				3F26FCAA19759CA900106EFC /* Supporting Files */,
 			);
 			path = StartRunning;
@@ -264,26 +265,6 @@
 				3F26FD1219759D1100106EFC /* Session.m */,
 				3F170A3219793D570087C438 /* Route.h */,
 				3F170A3319793D570087C438 /* Route.m */,
-				3F170A11197689AC0087C438 /* SessionHelper.h */,
-				3F170A12197689AC0087C438 /* SessionHelper.m */,
-				3F170A0E197667310087C438 /* PlistManager.h */,
-				3F170A0F197667310087C438 /* PlistManager.m */,
-				3F26FD2719759E0500106EFC /* TimersManager.h */,
-				3F26FD2819759E0500106EFC /* TimersManager.m */,
-				3F170A2719790E420087C438 /* GPSManager.h */,
-				3F170A2819790E420087C438 /* GPSManager.m */,
-				3FB166CF197BD53A00EE1346 /* ProfileHelper.h */,
-				3FB166D0197BD53A00EE1346 /* ProfileHelper.m */,
-				3FB166D5197CF7CB00EE1346 /* UIColor+CustomColor.h */,
-				3FB166D6197CF7CB00EE1346 /* UIColor+CustomColor.m */,
-				3FB166D8197D1FBF00EE1346 /* SessionTableViewCell.h */,
-				3FB166D9197D1FBF00EE1346 /* SessionTableViewCell.m */,
-				3F9A935F197E4ACD00106CC9 /* IMCcalculator.h */,
-				3F9A9360197E4ACD00106CC9 /* IMCcalculator.m */,
-				3F9A9378197EA58200106CC9 /* MediaHelper.h */,
-				3F9A9379197EA58200106CC9 /* MediaHelper.m */,
-				3F9A937D197ED78400106CC9 /* CustomSection.h */,
-				3F9A937E197ED78400106CC9 /* CustomSection.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -313,8 +294,6 @@
 				3FA81DE9197D641200B476F8 /* MapViewController.m */,
 				3FA81DEF197E371E00B476F8 /* StatisticsViewController.h */,
 				3FA81DF0197E371E00B476F8 /* StatisticsViewController.m */,
-				3F9A9375197E71BE00106CC9 /* TextFormateer.h */,
-				3F9A9376197E71BE00106CC9 /* TextFormateer.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -338,6 +317,35 @@
 				3F170A1A1976AA450087C438 /* back.png */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		3FD96A241980CA9B00CE7CC4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3F9A9375197E71BE00106CC9 /* TextFormateer.h */,
+				3F9A9376197E71BE00106CC9 /* TextFormateer.m */,
+				3F170A11197689AC0087C438 /* SessionHelper.h */,
+				3F170A12197689AC0087C438 /* SessionHelper.m */,
+				3F170A0E197667310087C438 /* PlistManager.h */,
+				3F170A0F197667310087C438 /* PlistManager.m */,
+				3F26FD2719759E0500106EFC /* TimersManager.h */,
+				3F26FD2819759E0500106EFC /* TimersManager.m */,
+				3F170A2719790E420087C438 /* GPSManager.h */,
+				3F170A2819790E420087C438 /* GPSManager.m */,
+				3FB166CF197BD53A00EE1346 /* ProfileHelper.h */,
+				3FB166D0197BD53A00EE1346 /* ProfileHelper.m */,
+				3FB166D5197CF7CB00EE1346 /* UIColor+CustomColor.h */,
+				3FB166D6197CF7CB00EE1346 /* UIColor+CustomColor.m */,
+				3FB166D8197D1FBF00EE1346 /* SessionTableViewCell.h */,
+				3FB166D9197D1FBF00EE1346 /* SessionTableViewCell.m */,
+				3F9A935F197E4ACD00106CC9 /* IMCcalculator.h */,
+				3F9A9360197E4ACD00106CC9 /* IMCcalculator.m */,
+				3F9A9378197EA58200106CC9 /* MediaHelper.h */,
+				3F9A9379197EA58200106CC9 /* MediaHelper.m */,
+				3F9A937D197ED78400106CC9 /* CustomSection.h */,
+				3F9A937E197ED78400106CC9 /* CustomSection.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
