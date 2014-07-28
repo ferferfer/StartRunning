@@ -10,12 +10,41 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+	CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
+	
+	if (iOSDeviceScreenSize.height == 480)
+    {
+			// Instantiate a new storyboard object using the storyboard file named Storyboard_iPhone35
+			UIStoryboard *iPhone35Storyboard = [UIStoryboard storyboardWithName:@"Storyboard35" bundle:nil];
+			
+			// Instantiate the initial view controller object from the storyboard
+			UIViewController *initialViewController = [iPhone35Storyboard instantiateInitialViewController];
+			
+			// Instantiate a UIWindow object and initialize it with the screen size of the iOS device
+			self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+			
+			// Set the initial view controller to be the root view controller of the window object
+			self.window.rootViewController  = initialViewController;
+			
+			// Set the window object to be the key window and show it
+			[self.window makeKeyAndVisible];
+    }
+	
+	if (iOSDeviceScreenSize.height == 568)
+    {   // iPhone 5 and iPod Touch 5th generation: 4 inch screen
+			// Instantiate a new storyboard object using the storyboard file named Storyboard_iPhone4
+			UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+			
+			UIViewController *initialViewController = [mainStoryboard instantiateInitialViewController];
+			self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+			self.window.rootViewController  = initialViewController;
+			[self.window makeKeyAndVisible];
+    }
+
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 	// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
