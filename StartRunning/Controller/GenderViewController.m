@@ -9,8 +9,9 @@
 #import "GenderViewController.h"
 #import "PlistManager.h"
 #import "IMCcalculator.h"
+#import "TextFormateer.h"
 
-@interface GenderViewController ()
+@interface GenderViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *genderController;
 
@@ -33,6 +34,8 @@
 
 - (void)viewDidLoad{
 	[super viewDidLoad];
+	self.weightTextField.delegate=self;
+	self.heightTextField.delegate=self;
 	
 	if(![self.plistManager plistExistInDocumentsFolder]){
 		self.okButton.hidden=NO;
@@ -49,20 +52,6 @@
 	}
 	
 }
-- (IBAction)genderPressed:(id)sender {
-	switch (self.genderController.selectedSegmentIndex){
-    case 0:
-			self.person.gender=@"Male";
-      break;
-    case 1:
-			self.person.gender=@"Female";
-      break;
-    default:
-      break;
-  }
-	[self.plistManager updateProfile:self.person];
-}
-
 
 -(void)loadDataFromPerson{
 	self.weightTextField.text=[NSString stringWithFormat:@"%.1f",self.person.weight];
@@ -99,6 +88,21 @@
 
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+	if ([self.weightTextField	isEditing]) {
+		if([TextFormateer lengthMoreThan:5 ofTextField:self.weightTextField andString:string]){
+			return NO;
+		}
+	}
+	if ([self.heightTextField isEditing]) {
+		if([TextFormateer lengthMoreThan:3 ofTextField:self.heightTextField andString:string]){
+			return NO;
+		}
+	}
+	return YES;
+}
+
+
 - (IBAction)okButtonPressed:(id)sender {
 	self.person.gender=@"male";
 	self.person.height=[self.heightTextField.text intValue];
@@ -108,5 +112,18 @@
 	//	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)genderPressed:(id)sender {
+	switch (self.genderController.selectedSegmentIndex){
+    case 0:
+			self.person.gender=@"Male";
+      break;
+    case 1:
+			self.person.gender=@"Female";
+      break;
+    default:
+      break;
+  }
+	[self.plistManager updateProfile:self.person];
+}
 
 @end

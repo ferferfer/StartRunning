@@ -60,6 +60,9 @@
 		3FB166D4197C06B300EE1346 /* SessionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB166D3197C06B300EE1346 /* SessionsTableViewController.m */; };
 		3FB166D7197CF7CB00EE1346 /* UIColor+CustomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB166D6197CF7CB00EE1346 /* UIColor+CustomColor.m */; };
 		3FB166DA197D1FBF00EE1346 /* SessionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB166D9197D1FBF00EE1346 /* SessionTableViewCell.m */; };
+		3FE81CDC198913100087D796 /* icoNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE81CDB198913100087D796 /* icoNew.png */; };
+		3FE81CDF198913AC0087D796 /* icoSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE81CDD198913AC0087D796 /* icoSettings.png */; };
+		3FE81CE0198913AC0087D796 /* icoSpotlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE81CDE198913AC0087D796 /* icoSpotlight.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +154,9 @@
 		3FB166D6197CF7CB00EE1346 /* UIColor+CustomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColor.m"; sourceTree = "<group>"; };
 		3FB166D8197D1FBF00EE1346 /* SessionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionTableViewCell.h; sourceTree = "<group>"; };
 		3FB166D9197D1FBF00EE1346 /* SessionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionTableViewCell.m; sourceTree = "<group>"; };
+		3FE81CDB198913100087D796 /* icoNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoNew.png; sourceTree = "<group>"; };
+		3FE81CDD198913AC0087D796 /* icoSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoSettings.png; sourceTree = "<group>"; };
+		3FE81CDE198913AC0087D796 /* icoSpotlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoSpotlight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,8 +310,11 @@
 		3F26FD3019759E6000106EFC /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				3FE81CDB198913100087D796 /* icoNew.png */,
 				3F8EDD311980355E0047E06C /* iconApp.png */,
 				3F170A25197833EB0087C438 /* ok.png */,
+				3FE81CDD198913AC0087D796 /* icoSettings.png */,
+				3FE81CDE198913AC0087D796 /* icoSpotlight.png */,
 				3F170A1E1976E3290087C438 /* zapatilla.png */,
 				3F8EDD3319803ECA0047E06C /* disclosure.png */,
 				3F26FD2619759E0500106EFC /* stop.png */,
@@ -441,6 +450,7 @@
 				3FA81DEE197D6AF900B476F8 /* iconBack.png in Resources */,
 				3F26FCBC19759CA900106EFC /* Images.xcassets in Resources */,
 				3F26FD1419759D1100106EFC /* iconMenu.png in Resources */,
+				3FE81CDF198913AC0087D796 /* icoSettings.png in Resources */,
 				3F170A1F1976E3290087C438 /* zapatilla.png in Resources */,
 				3F170A26197833EB0087C438 /* ok.png in Resources */,
 				3F2ED20219863CA5004FE664 /* Storyboard35.storyboard in Resources */,
@@ -451,7 +461,9 @@
 				3F26FD1519759D1100106EFC /* iconPlay.png in Resources */,
 				3F26FD1319759D1100106EFC /* background.png in Resources */,
 				3F8EDD321980355E0047E06C /* iconApp.png in Resources */,
+				3FE81CE0198913AC0087D796 /* icoSpotlight.png in Resources */,
 				3F26FD1619759D1100106EFC /* iconProfile.png in Resources */,
+				3FE81CDC198913100087D796 /* icoNew.png in Resources */,
 				3FA81DED197D6AF900B476F8 /* glass.png in Resources */,
 				3F26FD2C19759E3400106EFC /* Main.storyboard in Resources */,
 				3F26FD2319759DBA00106EFC /* StartRunning-Info.plist in Resources */,
