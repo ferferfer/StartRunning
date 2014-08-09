@@ -321,7 +321,7 @@
                                 </state>
                                 <connections>
                                     <action selector="stopPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EEN-6d-7kF"/>
-                                    <segue destination="haJ-k2-d9y" kind="modal" identifier="summarySegue" id="A24-hQ-f9i"/>
+                                    <segue destination="haJ-k2-d9y" kind="push" identifier="summarySegue" id="A24-hQ-f9i"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydm-MI-JU9">

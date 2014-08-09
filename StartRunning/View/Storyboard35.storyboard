@@ -356,7 +356,7 @@
                                 </state>
                                 <connections>
                                     <action selector="stopPressed:" destination="oC8-yY-z0e" eventType="touchUpInside" id="c1c-4G-vRh"/>
-                                    <segue destination="of1-Zm-jww" kind="modal" identifier="summarySegue" id="635-rh-FKX"/>
+                                    <segue destination="of1-Zm-jww" kind="push" identifier="summarySegue" id="635-rh-FKX"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Enter the time of intervals to walk and run with what you feel more comfortable." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69J-aJ-r9S">

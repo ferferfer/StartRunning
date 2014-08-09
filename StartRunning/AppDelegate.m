@@ -7,12 +7,15 @@
 //
 
 #import "AppDelegate.h"
+@import AVFoundation;
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
 	CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
-	
+//	AVAudioSession *session = [AVAudioSession sharedInstance];
+//	[session setCategory:AVAudioSessionCategoryPlayback error:nil];
 	if (iOSDeviceScreenSize.height == 480)
     {
 			// Instantiate a new storyboard object using the storyboard file named Storyboard_iPhone35

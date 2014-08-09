@@ -62,9 +62,10 @@
 	
 	[self.musicPlayerController nowPlayingItem];
 	AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-	if(audioSession.isOtherAudioPlaying){
-		self.wasPlaying = YES;
-	}
+  [audioSession setCategory:AVAudioSessionCategoryPlayback
+								 withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
+	
+
 	if ([sentence isEqualToString:@"run"]) {
 		[self.syn speakUtterance:self.speechRun];
 	}else{
@@ -72,12 +73,7 @@
 	}
 	//Vibrate
 	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-}
-
--(void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance{
-	if(self.wasPlaying){
-		[self.musicPlayerController play];
-	}
+	[audioSession setActive:NO error:nil];
 }
 
 
