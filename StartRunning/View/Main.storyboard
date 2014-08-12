@@ -164,7 +164,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="48"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="25,8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSe-0T-blC">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSe-0T-blC">
                                 <rect key="frame" x="83" y="408" width="153" height="67"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="70"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -194,7 +194,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="90.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jPf-pF-0Cc">
-                                <rect key="frame" x="90" y="177" width="122" height="41"/>
+                                <rect key="frame" x="99" y="177" width="122" height="41"/>
                                 <accessibility key="accessibilityConfiguration" label="weight"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="48"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -321,7 +321,7 @@
                                 </state>
                                 <connections>
                                     <action selector="stopPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="EEN-6d-7kF"/>
-                                    <segue destination="haJ-k2-d9y" kind="push" identifier="summarySegue" id="A24-hQ-f9i"/>
+                                    <segue destination="haJ-k2-d9y" kind="modal" identifier="summarySegue" id="A24-hQ-f9i"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydm-MI-JU9">
@@ -503,7 +503,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="coP-JT-ewC" kind="push" id="n3g-KY-4eZ"/>
+                                    <segue destination="coP-JT-ewC" kind="modal" modalTransitionStyle="flipHorizontal" id="n3g-KY-4eZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -539,32 +539,53 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yJv-xQ-vKe">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
+                            <view alpha="0.89999999999999991" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h3w-yF-uPk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2TG-dO-qsE">
+                                        <rect key="frame" x="134" y="27" width="174" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Satellite"/>
+                                            <segment title="Standard"/>
+                                            <segment title="Hybrid"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.36127713319999999" green="0.76553678510000001" blue="0.47196012739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="stylePressed:" destination="coP-JT-ewC" eventType="valueChanged" id="1R4-jw-WVg"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBK-af-6EI">
+                                        <rect key="frame" x="0.0" y="23" width="108" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <state key="normal" title=" Summary" image="iconBack.png">
+                                            <color key="titleColor" red="0.36127713319999999" green="0.76553678510000001" blue="0.47196012739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backPressed:" destination="coP-JT-ewC" eventType="touchUpInside" id="9Je-y0-MZ0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92269885846615562" green="1" blue="0.90905641349812893" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.36127713319999999" green="0.76553678510000001" blue="0.47196012739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="iDm-rD-ysQ">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" style="done" id="Oa6-7B-0WR">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="JF3-3B-la7">
-                                <rect key="frame" x="77" y="7" width="227" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Satellite"/>
-                                    <segment title="Standard"/>
-                                    <segment title="Hybrid"/>
-                                </segments>
-                                <connections>
-                                    <action selector="stylePressed:" destination="coP-JT-ewC" eventType="valueChanged" id="uZE-So-aJ8"/>
-                                </connections>
-                            </segmentedControl>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="map" destination="yJv-xQ-vKe" id="SnV-yV-vfU"/>
-                        <outlet property="styleController" destination="JF3-3B-la7" id="WH5-d3-g96"/>
+                        <outlet property="styleController" destination="2TG-dO-qsE" id="92m-Uk-peq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kcZ-gA-MyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -620,6 +641,7 @@
         <image name="back.png" width="140" height="80"/>
         <image name="background.png" width="640" height="1136"/>
         <image name="glass.png" width="25" height="25"/>
+        <image name="iconBack.png" width="15" height="26"/>
         <image name="iconMenu.png" width="25" height="25"/>
         <image name="iconPlay.png" width="25" height="25"/>
         <image name="iconProfile.png" width="25" height="25"/>
@@ -635,8 +657,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="8Ma-uq-nRP"/>
         <segue reference="Ed5-oJ-ACI"/>
         <segue reference="olp-FI-511"/>
-        <segue reference="A24-hQ-f9i"/>
     </inferredMetricsTieBreakers>
 </document>
