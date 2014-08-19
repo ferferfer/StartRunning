@@ -76,6 +76,10 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+	if ([self.weightTextField.text rangeOfString:@","].location == NSNotFound) {
+		self.weightTextField.text=[NSString stringWithFormat:@"%@,0", self.weightTextField.text];
+	}
+	
 	self.person.weight=[self.weightTextField.text doubleValue];
 	self.person.height=[self.heightTextField.text intValue];
 	[self.plistManager updateProfile:self.person];
@@ -85,7 +89,7 @@
 
 -(CGFloat)calculateIMC{
 	return [IMCcalculator calculateIMCWithWeight:self.person.weight andHeight:self.person.height];
-
+	
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{

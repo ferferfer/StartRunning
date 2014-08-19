@@ -229,7 +229,7 @@
                         <color key="sectionIndexTrackingBackgroundColor" red="0.76423987770000001" green="1" blue="0.74142118290000003" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="sessionCell" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sessionCell" rowHeight="40" id="r0n-hi-bg3" customClass="SessionTableViewCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r0n-hi-bg3" id="gpz-2m-Cs4">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="40"/>
@@ -356,7 +356,7 @@
                                 </state>
                                 <connections>
                                     <action selector="stopPressed:" destination="oC8-yY-z0e" eventType="touchUpInside" id="c1c-4G-vRh"/>
-                                    <segue destination="of1-Zm-jww" kind="push" identifier="summarySegue" id="635-rh-FKX"/>
+                                    <segue destination="of1-Zm-jww" kind="modal" identifier="summarySegue" id="635-rh-FKX"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Enter the time of intervals to walk and run with what you feel more comfortable." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69J-aJ-r9S">
@@ -668,8 +668,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="635-rh-FKX"/>
         <segue reference="HjT-Lx-tuY"/>
         <segue reference="Xd7-HT-MAW"/>
-        <segue reference="w5j-X4-7hI"/>
     </inferredMetricsTieBreakers>
 </document>

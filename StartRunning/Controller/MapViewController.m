@@ -63,7 +63,7 @@
 			self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.sessionHelper.routeLine];
 			self.routeLineView.fillColor = [UIColor blueColor];
 			self.routeLineView.strokeColor = [UIColor blueColor];
-			self.routeLineView.lineWidth = 12;
+			self.routeLineView.lineWidth = 15;
 		}
 		
 		overlayView = self.routeLineView;

@@ -9,8 +9,8 @@
 #import "SessionHelper.h"
 #import "PlistManager.h"
 
-#define KCAL_POR_KM_ANDANDO 0.73
-#define KCAL_POR_KM_CORRIENDO 1.03
+#define KCAL_EACH_KM_WALKING 0.73
+#define KCAL_EACH_KM_RUNNING 1.03
 
 @interface SessionHelper()
 
@@ -129,8 +129,8 @@
 	double distanceWalked=(walkTime*distance)/totalTime;
 	double distanceRunned=(runTime*distance)/totalTime;
 	
-	kCal=((person.weight*KCAL_POR_KM_ANDANDO)*(distanceWalked/1000))+
-			 ((person.weight*KCAL_POR_KM_CORRIENDO)*(distanceRunned/1000));
+	kCal=((person.weight*KCAL_EACH_KM_WALKING)*(distanceWalked/1000))+
+			 ((person.weight*KCAL_EACH_KM_RUNNING)*(distanceRunned/1000));
 	
 	return kCal;
 }

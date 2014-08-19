@@ -16,6 +16,9 @@
 	
 	NSMutableArray *contentArray = [[NSArray arrayWithContentsOfFile:filePath] mutableCopy];
 	
+	//this remove the first coordinate in order to work better on the insides
+	[session.route.arrayOfCoordinates removeObjectAtIndex:0];
+	
 	NSMutableDictionary *newSession=[[NSMutableDictionary alloc]init];
 	[newSession setValue:session.sessionDate forKey:@"sessionDate"];
 	[newSession setValue:@(session.totalWalking) forKey:@"totalWalking"];

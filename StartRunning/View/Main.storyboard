@@ -657,8 +657,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8Ma-uq-nRP"/>
-        <segue reference="Ed5-oJ-ACI"/>
         <segue reference="olp-FI-511"/>
+        <segue reference="Ed5-oJ-ACI"/>
+        <segue reference="A24-hQ-f9i"/>
     </inferredMetricsTieBreakers>
 </document>
