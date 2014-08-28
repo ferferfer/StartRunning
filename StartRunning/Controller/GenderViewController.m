@@ -36,6 +36,7 @@
 	[super viewDidLoad];
 	self.weightTextField.delegate=self;
 	self.heightTextField.delegate=self;
+
 	
 	if(![self.plistManager plistExistInDocumentsFolder]){
 		self.okButton.hidden=NO;
@@ -58,6 +59,12 @@
 	self.heightTextField.text=[NSString stringWithFormat:@"%lu",(unsigned long)self.person.height];
 	NSInteger row=[self.person.gender isEqualToString:@"Male"]?0:1;
 	[self.genderController setSelectedSegmentIndex:row];
+	self.imcText.text=[NSString stringWithFormat:@"%.1f",[self calculateIMC]];
+	
+	if (self.weightTextField.text.length>5) {
+    self.weightTextField.text=@"";
+		self.imcText.text=@"";
+	}
 }
 
 
@@ -76,12 +83,10 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-	if ([self.weightTextField.text rangeOfString:@","].location == NSNotFound) {
-		self.weightTextField.text=[NSString stringWithFormat:@"%@,0", self.weightTextField.text];
-	}
-	
-	self.person.weight=[self.weightTextField.text doubleValue];
+
+	self.person.weight=[TextFormateer correctWeightFormat:self.weightTextField];
 	self.person.height=[self.heightTextField.text intValue];
+	
 	[self.plistManager updateProfile:self.person];
 	self.imcText.text=[NSString stringWithFormat:@"%.1f",[self calculateIMC]];
 	[self.view endEditing:YES];

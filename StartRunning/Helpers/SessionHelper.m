@@ -43,6 +43,10 @@
 		NSNumber *latitude1=[dict1 valueForKey:@"latitude"];
 		NSNumber *longitude1=[dict1 valueForKey:@"longitude"];;
 		CLLocation *location1=[[CLLocation alloc]initWithLatitude:[latitude1 floatValue] longitude:[longitude1 floatValue]];
+		if(latitude1 == 0){
+			
+			return totalDistance;
+		}
 		
 		NSMutableDictionary *dict2=[[NSMutableDictionary alloc] init];
 		dict2 = [array objectAtIndex:i+1];
@@ -50,7 +54,6 @@
 		NSNumber *longitude2=[dict2 valueForKey:@"longitude"];;
 		CLLocation *location2=[[CLLocation alloc]initWithLatitude:[latitude2 floatValue] longitude:[longitude2 floatValue]];
 		
-    
     CLLocationDistance distance = [location1 distanceFromLocation:location2];
 		
 		totalDistance+=distance;

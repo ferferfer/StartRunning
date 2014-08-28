@@ -46,10 +46,7 @@
 	[super viewDidLoad];
 	self.navigationController.navigationBar.backgroundColor=[UIColor appGreenColor];
 	self.tableView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
-//	CAGradientLayer *bgLayer = [UIColor navigationMenuGradient];
-//	bgLayer.frame = self.tableView.bounds;
-//
-//	[self.tableView.layer insertSublayer:bgLayer atIndex:0];
+
 }
 
 - (void)didReceiveMemoryWarning{

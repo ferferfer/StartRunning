@@ -16,4 +16,5 @@
 +(BOOL)lengthMoreThan:(NSUInteger)lenght ofTextField:(UITextField *)texField andString:(NSString *)string;
 +(BOOL)shouldAddColonTo:(UITextField *)textField withString:(NSString *)string;
 +(NSString *)addColonTo:(UITextField *)textField;
++(double)correctWeightFormat:(UITextField *)textField;
 @end

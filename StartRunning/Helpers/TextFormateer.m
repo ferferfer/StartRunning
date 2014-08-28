@@ -69,4 +69,22 @@
 	return [textField.text stringByAppendingString:@":"];
 }
 
++(double)correctWeightFormat:(UITextField *)textField{
+	if ([textField.text rangeOfString:@","].location != NSNotFound){
+		
+		textField.text = [textField.text stringByReplacingOccurrencesOfString:@","
+																				 withString:@"."];
+	}
+	if([textField.text rangeOfString:@"."].location == NSNotFound) {
+		if (textField.text.length<=3) {
+		textField.text=[NSString stringWithFormat:@"%@.0", textField.text];
+		}
+
+	}
+	
+	return [textField.text doubleValue];
+
+}
+
+
 @end
