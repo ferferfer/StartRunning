@@ -38,7 +38,7 @@
 
 -(Session *)loadSessionWithIndex:(NSInteger)index{
 	NSString *path=[self pathOfPlistInDocumentsFolder];
-	NSMutableArray *contentArray = [NSArray arrayWithContentsOfFile:path];
+	NSMutableArray *contentArray = [NSMutableArray arrayWithContentsOfFile:path];
 	NSMutableDictionary *data=[contentArray objectAtIndex:index];
 	NSMutableArray *arrayOfCoordinates= [data objectForKey:@"route"];
 	Route *route=[[Route alloc]initWithArrayofCoordinates:arrayOfCoordinates];
@@ -74,7 +74,7 @@
 
 -(BOOL)plistExistInDocumentsFolder{
 	NSString *path=[self pathOfPlistInDocumentsFolder];
-	NSMutableArray *array = [NSArray arrayWithContentsOfFile:path];
+	NSMutableArray *array = [NSMutableArray arrayWithContentsOfFile:path];
 	if (array) {
     return YES;
 	}
@@ -91,7 +91,7 @@
 
 -(Person *)loadProfile{
 	NSString *path=[self pathOfPlistInDocumentsFolder];
-	NSMutableArray *contentArray = [NSArray arrayWithContentsOfFile:path];
+	NSMutableArray *contentArray = [NSMutableArray arrayWithContentsOfFile:path];
 	NSMutableDictionary *data=[contentArray firstObject];
 	Person *person=[[Person alloc]initWithGender:[data valueForKey:@"gender"]
 																		 andHeight:[[data valueForKey:@"height"] intValue]
@@ -109,7 +109,7 @@
 	[profile setObject:@(person.height) forKey:@"height"];
 	[profile setObject:@(person.weight) forKey:@"weight"];
 	
-	NSMutableArray *array=[NSArray arrayWithContentsOfFile:filePath];
+	NSMutableArray *array=[NSMutableArray arrayWithContentsOfFile:filePath];
 	[array removeObjectAtIndex:0];
 	[array insertObject:profile atIndex:0];
 	[array writeToFile:filePath atomically: YES];
@@ -118,13 +118,13 @@
 
 -(NSInteger)numberofSessionsInPlist{
 	NSString *path=[self pathOfPlistInDocumentsFolder];
-	NSMutableArray *array = [NSArray arrayWithContentsOfFile:path];
+	NSMutableArray *array = [NSMutableArray arrayWithContentsOfFile:path];
 	return [array count];
 }
 
 -(NSArray *)arrayOfSessions{
 	NSString *path=[self pathOfPlistInDocumentsFolder];
-	NSMutableArray *array = [NSArray arrayWithContentsOfFile:path];
+	NSMutableArray *array = [NSMutableArray arrayWithContentsOfFile:path];
 	NSMutableArray *sessionsArray=[[NSMutableArray alloc]init];
 	for(int i=1;i<[array count];i++){
 		[sessionsArray addObject:[array objectAtIndex:i]];

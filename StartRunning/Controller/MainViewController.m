@@ -281,6 +281,7 @@
 	
 	self.playButton.hidden=NO;
 	self.pauseButton.hidden=YES;
+	self.stopButton.enabled=NO;
 	
 	self.textFieldTimeRunning.enabled=YES;
 	self.textFieldTimeWalking.enabled=YES;
